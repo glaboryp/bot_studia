@@ -59,29 +59,82 @@ Para usar Gmail, necesitas una "contraseña de aplicación":
 
 ## 🏃‍♂️ Uso
 
-### Ejecutar una vez
+### Opciones de ejecución
+El bot tiene 3 modos de funcionamiento:
+
+#### 1. Verificación única (para probar)
+```bash
+python studia_bot_definitivo.py --once
+```
+Ejecuta una sola verificación y termina. Ideal para:
+- Probar que todo funciona correctamente
+- Ver qué cursos hay disponibles actualmente
+- Verificar la configuración
+
+#### 2. Monitoreo automático (recomendado)
+```bash
+python studia_bot_definitivo.py --monitor
+```
+Inicia el monitoreo automático cada 30 minutos. El bot:
+- Se ejecuta inmediatamente al iniciarlo
+- Luego se repite automáticamente cada 30 minutos
+- Solo envía email cuando detecta cambios (cursos nuevos o más plazas)
+- Sigue ejecutándose hasta que lo detengas con `Ctrl+C`
+
+#### 3. Ejecución por defecto (sin parámetros)
 ```bash
 python studia_bot_definitivo.py
 ```
+Sin parámetros, inicia automáticamente el modo monitoreo.
 
-### Monitoreo continuo (local)
+### Monitoreo continuo con scripts de ayuda
+
+Para mayor comodidad, puedes usar los scripts incluidos:
+
+#### Windows
+```cmd
+run_monitor.bat
+```
+Este script:
+- Muestra información del bot
+- Inicia el monitoreo automático cada 30 minutos
+- Incluye manejo de errores y reinicio automático
+
+#### Linux/Mac (manual)
 ```bash
-python -c "
-import subprocess
-import time
-while True:
-    subprocess.run(['python', 'studia_bot_definitivo.py'])
-    time.sleep(1800)  # 30 minutos
-"
+while true; do 
+    python studia_bot_definitivo.py --once
+    sleep 1800  # 30 minutos = 1800 segundos
+done
 ```
 
-O usa el script de ayuda:
-```bash
-# Windows
-run_monitor.bat
+### Consejos para uso local
+- **Primera vez**: Usa `--once` para verificar que todo funciona
+- **Uso diario**: Usa `--monitor` o `run_monitor.bat` para monitoreo continuo
+- **Para detener**: Presiona `Ctrl+C` en el terminal
+- **Ver logs**: Revisa el archivo `bot_studia_definitivo.log` que se genera automáticamente
 
-# Linux/Mac
-while true; do python studia_bot_definitivo.py; sleep 1800; done
+### Ejemplo de uso paso a paso
+
+```bash
+# 1. Primera ejecución - verificar configuración
+python studia_bot_definitivo.py --once
+
+# Si todo funciona correctamente, verás algo como:
+# ✅ Login realizado exitosamente
+# ✅ CURSOS ACTUALES (17): ...
+# ✅ Verificación completada
+
+# 2. Iniciar monitoreo automático
+python studia_bot_definitivo.py --monitor
+
+# El bot mostrará:
+# 🔄 === INICIANDO MONITOREO AUTOMÁTICO ===
+# ⏰ Verificación cada 30 minutos
+# 🚨 Email solo cuando hay NUEVAS plazas
+# 
+# Y se ejecutará automáticamente cada 30 minutos
+# Solo recibirás email cuando haya cambios reales
 ```
 
 ## ☁️ Despliegue en Railway
