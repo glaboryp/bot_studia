@@ -57,6 +57,13 @@ Para usar Gmail, necesitas una "contraseña de aplicación":
 3. Genera una contraseña de aplicación
 4. Usa esa contraseña en `EMAIL_PASSWORD`
 
+### 5. Múltiples destinatarios (opcional)
+Para enviar notificaciones a varias personas, separa los emails con comas:
+```bash
+EMAIL_TO=email1@gmail.com,email2@yahoo.com,email3@hotmail.com
+```
+El bot enviará la misma notificación a todos los destinatarios.
+
 ## 🏃‍♂️ Uso
 
 ### Opciones de ejecución

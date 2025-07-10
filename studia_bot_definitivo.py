@@ -40,7 +40,12 @@ class StudiaBotDefinitivo:
         # Email
         self.email_from = os.getenv('EMAIL_FROM')
         self.email_password = os.getenv('EMAIL_PASSWORD')
-        self.email_to = os.getenv('EMAIL_TO')
+        email_to_raw = os.getenv('EMAIL_TO')
+        # Soporte para múltiples destinatarios separados por comas
+        if email_to_raw:
+            self.email_to = [email.strip() for email in email_to_raw.split(',') if email.strip()]
+        else:
+            self.email_to = []
         self.smtp_server = os.getenv('SMTP_SERVER', 'smtp.gmail.com')
         self.smtp_port = int(os.getenv('SMTP_PORT', '587'))
         
@@ -484,7 +489,7 @@ class StudiaBotDefinitivo:
         try:
             msg = MIMEMultipart()
             msg['From'] = self.email_from
-            msg['To'] = self.email_to
+            msg['To'] = ', '.join(self.email_to)  # Unir múltiples destinatarios con comas
             msg['Subject'] = f"StudiaOnline - Cursos Disponibles Julio/Agosto 2025 ({datetime.now().strftime('%d/%m/%Y')})"
             
             if courses:
@@ -532,9 +537,11 @@ class StudiaBotDefinitivo:
             with smtplib.SMTP(self.smtp_server, self.smtp_port) as server:
                 server.starttls()
                 server.login(self.email_from, self.email_password)
-                server.send_message(msg)
+                # Enviar a todos los destinatarios
+                for recipient in self.email_to:
+                    server.sendmail(self.email_from, recipient, msg.as_string())
             
-            logging.info(f"📧 Email enviado: {len(courses)} cursos con plazas")
+            logging.info(f"📧 Email enviado a {len(self.email_to)} destinatarios: {len(courses)} cursos con plazas")
             return True
             
         except Exception as e:
@@ -546,7 +553,7 @@ class StudiaBotDefinitivo:
         try:
             msg = MIMEMultipart()
             msg['From'] = self.email_from
-            msg['To'] = self.email_to
+            msg['To'] = ', '.join(self.email_to)  # Unir múltiples destinatarios con comas
             msg['Subject'] = f"🚨 StudiaOnline - NUEVAS PLAZAS DISPONIBLES! ({datetime.now().strftime('%d/%m %H:%M')})"
             
             body = "🚨 ¡ALERTA DE PLAZAS!\n"
@@ -580,9 +587,11 @@ class StudiaBotDefinitivo:
             with smtplib.SMTP(self.smtp_server, self.smtp_port) as server:
                 server.starttls()
                 server.login(self.email_from, self.email_password)
-                server.send_message(msg)
+                # Enviar a todos los destinatarios
+                for recipient in self.email_to:
+                    server.sendmail(self.email_from, recipient, msg.as_string())
             
-            logging.info(f"🚨 Email de ALERTA enviado: {len(new_courses)} cambios detectados")
+            logging.info(f"🚨 Email de ALERTA enviado a {len(self.email_to)} destinatarios: {len(new_courses)} cambios detectados")
             return True
             
         except Exception as e:
@@ -594,7 +603,7 @@ class StudiaBotDefinitivo:
         logging.info("🚀 === BOT DEFINITIVO - MONITOREO AUTOMÁTICO ===")
         logging.info(f"👤 Usuario: {self.username}")
         logging.info(f"🎯 Objetivo: Detectar nuevas plazas disponibles")
-        logging.info(f"📧 Notificación a: {self.email_to}")
+        logging.info(f"📧 Notificación a: {', '.join(self.email_to)} ({len(self.email_to)} destinatarios)")
         
         try:
             # Cargar estado anterior
@@ -688,7 +697,7 @@ def main():
         (bot.password, "STUDIA_PASSWORD"),
         (bot.email_from, "EMAIL_FROM"),
         (bot.email_password, "EMAIL_PASSWORD"),
-        (bot.email_to, "EMAIL_TO")
+        (len(bot.email_to) > 0, "EMAIL_TO")  # Verificar que hay al menos un destinatario
     ]
     
     missing_fields = [field_name for field_value, field_name in required_fields if not field_value]
@@ -701,7 +710,7 @@ def main():
     
     print(f"✅ Configuración válida")
     print(f"👤 Usuario: {bot.username}")
-    print(f"📧 Notificaciones a: {bot.email_to}")
+    print(f"📧 Notificaciones a: {', '.join(bot.email_to)} ({len(bot.email_to)} destinatarios)")
     print()
     
     # Ejecutar
