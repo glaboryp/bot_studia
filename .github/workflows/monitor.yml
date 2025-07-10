@@ -1,0 +1,37 @@
+name: StudiaOnline Bot Monitor
+
+on:
+  schedule:
+    # Ejecuta cada 30 minutos
+    - cron: '*/30 * * * *'
+  workflow_dispatch:  # Permite ejecutar manualmente
+
+jobs:
+  monitor_courses:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        
+    - name: Run StudiaOnline Monitor
+      env:
+        STUDIA_USERNAME: ${{ secrets.STUDIA_USERNAME }}
+        STUDIA_PASSWORD: ${{ secrets.STUDIA_PASSWORD }}
+        EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        SMTP_SERVER: smtp.gmail.com
+        SMTP_PORT: 587
+        STUDIA_URL: https://formacion.studiaonline.com
+      run: |
+        python studia_bot_definitivo.py --once

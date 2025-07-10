@@ -4,10 +4,10 @@ Un bot automatizado que monitorea continuamente los cursos de StudiaOnline, filt
 
 ## 🚀 Características
 
-- **Monitoreo 24/7**: Se ejecuta cada 30 minutos automáticamente
+- **Monitoreo 24/7**: Se ejecuta cada 30 minutos automáticamente con GitHub Actions
 - **Filtrado inteligente**: Solo cursos de julio y agosto con plazas disponibles
 - **Notificaciones inteligentes**: Email solo cuando hay cambios reales
-- **Fácil despliegue**: Listo para Railway, Heroku u otras plataformas
+- **Despliegue gratuito**: GitHub Actions
 - **Persistencia**: Guarda estado para evitar notificaciones duplicadas
 - **Robusto**: Manejo de errores y logging completo
 
@@ -16,7 +16,7 @@ Un bot automatizado que monitorea continuamente los cursos de StudiaOnline, filt
 - Python 3.9+
 - Cuenta de StudiaOnline
 - Cuenta de Gmail (para notificaciones)
-- (Opcional) Cuenta de Railway para despliegue en la nube
+- Cuenta de GitHub (para despliegue automático gratis)
 
 ## ⚙️ Configuración Local
 
@@ -94,27 +94,6 @@ python studia_bot_definitivo.py
 ```
 Sin parámetros, inicia automáticamente el modo monitoreo.
 
-### Monitoreo continuo con scripts de ayuda
-
-Para mayor comodidad, puedes usar los scripts incluidos:
-
-#### Windows
-```cmd
-run_monitor.bat
-```
-Este script:
-- Muestra información del bot
-- Inicia el monitoreo automático cada 30 minutos
-- Incluye manejo de errores y reinicio automático
-
-#### Linux/Mac (manual)
-```bash
-while true; do 
-    python studia_bot_definitivo.py --once
-    sleep 1800  # 30 minutos = 1800 segundos
-done
-```
-
 ### Consejos para uso local
 - **Primera vez**: Usa `--once` para verificar que todo funciona
 - **Uso diario**: Usa `--monitor` o `run_monitor.bat` para monitoreo continuo
@@ -144,111 +123,116 @@ python studia_bot_definitivo.py --monitor
 # Solo recibirás email cuando haya cambios reales
 ```
 
-## ☁️ Despliegue en Railway
+## 🚀 Despliegue GRATUITO con GitHub Actions
 
-### Preparación automática
-Ejecuta el script de configuración:
-```bash
-# Windows
-deploy_setup.bat
+### 📦 Configuración paso a paso
 
-# Manual
-git add .
-git commit -m "Configuración inicial"
-git push origin main
-```
+1. **Hacer repositorio público** (para uso ilimitado gratis):
+   En GitHub: Repository → Settings → General → Change visibility → Public
 
-### Pasos en Railway
-1. **Crear proyecto**: Ve a [railway.app](https://railway.app) y conecta tu GitHub
-2. **Seleccionar repo**: Elige tu repositorio del bot
-3. **Configurar variables**: Ve a Variables y añade todas las del archivo `.env`
-4. **Desplegar**: Railway detectará automáticamente el `Procfile` y desplegará
+2. **Configurar GitHub Secrets**:
+   - Ve a tu repositorio → Settings → Secrets and variables → Actions → "New repository secret"
+   - Añade estos secrets uno por uno:
+     - `STUDIA_USERNAME` → tu usuario de StudiaOnline
+     - `STUDIA_PASSWORD` → tu contraseña de StudiaOnline  
+     - `EMAIL_FROM` → tu email de Gmail
+     - `EMAIL_PASSWORD` → tu app password de Gmail
+     - `EMAIL_TO` → emails destino (separados por comas si son varios)
+    - `SMTP_SERVER` → smtp.gmail.com
+    - `SMTP_PORT` → 587
+    - `STUDIA_URL` → https://studiaonline.org/
 
-### Variables de entorno en Railway
-Copia todas las variables de tu `.env` local:
-- `STUDIA_USERNAME`
-- `STUDIA_PASSWORD` 
-- `EMAIL_FROM`
-- `EMAIL_PASSWORD`
-- `EMAIL_TO`
-- `SMTP_SERVER`
-- `SMTP_PORT`
-- `STUDIA_URL`
+3. **Activar el workflow**:
+   - El archivo `.github/workflows/monitor.yml` ya está configurado
+   - Ve a: Repository → Actions → "StudiaOnline Bot Monitor" → "Enable workflow"
+   - O ejecuta manualmente: Actions → "Run workflow" → "Run workflow"
 
-## 📊 Cómo Funciona
+4. **¡Funciona automáticamente!**:
+   - Se ejecuta cada 30 minutos, 24/7 GRATIS
+   - Solo envía email cuando hay cambios reales
+   - Logs detallados visibles en Actions → workflow runs
 
-1. **Login**: Se conecta a StudiaOnline con tus credenciales
-2. **Navegación**: Va a la sección de cursos
-3. **Filtrado**: Busca cursos de julio y agosto con plazas disponibles
-4. **Comparación**: Compara con el estado anterior guardado en `cursos_anteriores.json`
-5. **Notificación**: Si hay cambios, envía email con los cursos nuevos/actualizados
-6. **Persistencia**: Guarda el nuevo estado para la próxima ejecución
-
-### Filtros Aplicados
-- ✅ Solo meses: julio, agosto
-- ✅ Solo cursos con plazas disponibles
-- ❌ Excluye cursos que contienen "Semestre"
-- ❌ Excluye cursos sin lugar especificado
 
 ## 📁 Estructura del Proyecto
 
 ```
 bot_studia/
-├── studia_bot_definitivo.py    # 🤖 Bot principal
-├── monitor.py                  # 🔄 Monitor para Railway
-├── requirements.txt            # 📦 Dependencias
-├── .env.example               # ⚙️ Plantilla de configuración
-├── README.md                  # 📖 Documentación completa
-├── Procfile                   # ☁️ Para Railway/Heroku
-├── railway.json               # 🚂 Configuración Railway
-├── runtime.txt                # 🐍 Versión de Python
-├── .gitignore                 # 🙈 Archivos a ignorar
-├── deploy_setup.bat           # 🚀 Script de despliegue
-├── run_monitor.bat            # 🖥️ Script de monitoreo local
-├── check_deploy.py            # ✅ Verificación de despliegue
-└── cursos_anteriores.json     # 💾 Estado persistente (generado automáticamente)
+├── 🤖 studia_bot_definitivo.py       # Bot principal
+├── 📦 requirements.txt               # Dependencias Python
+├── ⚙️ .env.example                   # Plantilla de configuración
+├── 📚 README.md                      # Documentación principal
+├── 🚀 .github/workflows/monitor.yml  # Configuración GitHub Actions
+├── 🔧 deploy_setup.bat               # Script de despliegue Windows
+├── 🗂️  .gitignore                    # Archivos a ignorar en Git
 ```
+
 
 ## 🔧 Troubleshooting
 
-### Error de login
-- Verifica usuario y contraseña en `.env`
+### ❌ Error de login en StudiaOnline
+- Verifica `STUDIA_USERNAME` y `STUDIA_PASSWORD` 
+- Confirma que puedes hacer login manual en la web
 - Revisa que la cuenta no esté bloqueada
 
-### Error de email
-- Verifica que usas contraseña de aplicación de Gmail
-- Confirma que la verificación en 2 pasos está activa
+### ❌ Error de email/Gmail
+- Verifica que usas **contraseña de aplicación** de Gmail (no tu contraseña normal)
+- Confirma que la **verificación en 2 pasos** está activa en tu cuenta Google
+- Verifica `EMAIL_FROM`, `EMAIL_PASSWORD` y `EMAIL_TO`
 
-### Error en Railway
-- Verifica que todas las variables de entorno están configuradas
-- Revisa los logs en el dashboard de Railway
+### ❌ Error en GitHub Actions
+- Verifica que todos los **GitHub Secrets** están configurados correctamente
+- Ve a Actions → workflow run → logs para ver error específico
+- Consulta `verificar_github_actions.md` para debugging detallado
 
-### El bot no encuentra cursos
-- Es normal si no hay cursos disponibles en julio/agosto
-- Revisa los logs para ver qué cursos están siendo filtrados
+### ❌ El bot no encuentra cursos
+- **Es normal** si no hay cursos disponibles en julio/agosto con plazas
+- Revisa los logs para ver qué cursos están siendo filtrados y por qué
+- El bot filtra por: meses específicos, plazas disponibles, y excluye "Semestre"
 
-## 📝 Logs
+### ❌ No recibo emails
+- **Es normal** si no hay cambios en los cursos
+- El bot **solo envía email cuando detecta cambios reales** (nuevos cursos o más plazas)
+- Usa `python studia_bot_definitivo.py --once` localmente para verificar funcionamiento
 
-El bot genera logs detallados en:
-- Local: `bot_studia_definitivo.log`
-- Railway: Visible en el dashboard
+## 📝 Logs y Monitoreo
 
-Los logs incluyen:
-- Cursos encontrados y filtrados
-- Razones de filtrado
-- Estados de email
-- Errores y warnings
+### GitHub Actions:
+- **Logs en tiempo real**: Repository → Actions → workflow run → "monitor_courses"
+- **Frecuencia**: Cada 30 minutos automáticamente  
+- **Persistencia**: Logs disponibles por 90 días
 
-## 🔄 Actualizaciones
+### Ejecución local:
+- **Archivo**: `bot_studia_definitivo.log` (generado automáticamente)
+- **Consola**: Output en tiempo real al ejecutar
 
-Para actualizar el bot en Railway:
+### Información en logs:
+- ✅ Login exitoso y navegación
+- 📊 Cursos encontrados y filtrados  
+- 🔍 Razones específicas de filtrado
+- 📧 Estado de envío de emails
+- ❌ Errores y warnings detallados
+
+## 🔄 Mantenimiento y Actualizaciones
+
+El proyecto está diseñado para **ser estable y requerir mantenimiento mínimo**:
+
+### 🔄 Actualizaciones automáticas:
+- ✅ **GitHub Actions**: Se mantiene automáticamente actualizado
+- ✅ **Python y dependencias**: GitHub usa la última versión estable
+- ✅ **Logs de ejecución**: Disponibles 90 días automáticamente
+
+### 🛠️ Mantenimiento ocasional:
+- **Credenciales**: Si cambias contraseña de StudiaOnline o Gmail
+- **Email destino**: Si quieres añadir/quitar destinatarios 
+- **Filtros de cursos**: Si StudiaOnline cambia formato (muy raro)
+
+### 🚀 Actualizar el bot:
 ```bash
 git add .
 git commit -m "Actualización"
 git push origin main
 ```
-
-Railway desplegará automáticamente los cambios.
+GitHub Actions desplegará automáticamente los cambios.
 
 ## 🤝 Contribuir
 

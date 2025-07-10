@@ -1,9 +1,12 @@
 @echo off
-echo 🚀 Preparación para Railway Deployment
-echo =====================================
+echo 🚀 Configuración para GitHub Actions
+echo ==================================
 echo.
-echo Este script te ayudará a subir el bot a GitHub
-echo Necesitarás haber creado un repositorio en GitHub primero
+echo ⭐ GitHub Actions - 100% GRATIS PARA SIEMPRE
+echo    - Ejecuta cada 30 minutos automáticamente
+echo    - Sin límites reales para repos públicos  
+echo    - Ya configurado en .github/workflows/monitor.yml
+echo    - Logs detallados en tiempo real
 echo.
 pause
 echo.
@@ -21,10 +24,10 @@ if not exist "studia_bot_definitivo.py" (
     exit
 )
 
-if not exist "Procfile" (
-    echo ❌ Falta Procfile
+if not exist ".github\workflows\monitor.yml" (
+    echo ❌ Falta .github/workflows/monitor.yml
+    echo ⚠️  El workflow de GitHub Actions no está configurado
     pause
-    exit
 )
 
 echo ✅ Archivos necesarios encontrados
@@ -41,7 +44,7 @@ echo ✅ Archivos añadidos
 echo.
 
 echo 📝 Creando commit...
-git commit -m "Bot StudiaOnline con monitoreo automatico - listo para Railway"
+git commit -m "Bot StudiaOnline - Configurado para GitHub Actions"
 echo ✅ Commit creado
 echo.
 
@@ -64,14 +67,30 @@ echo.
 if %errorlevel% equ 0 (
     echo ✅ ¡ÉXITO! Código subido a GitHub
     echo.
-    echo 📋 PRÓXIMOS PASOS:
-    echo 1. Ir a https://railway.app
-    echo 2. Login with GitHub
-    echo 3. New Project → Deploy from GitHub repo
-    echo 4. Seleccionar tu repositorio
-    echo 5. Configurar variables de entorno
+    echo 🎯 CONFIGURACIÓN GITHUB ACTIONS:
     echo.
-    echo 📖 Ver GUIA_DEPLOY.md para instrucciones detalladas
+    echo 1. Hacer repositorio PÚBLICO (para uso ilimitado gratis):
+    echo    Settings ^> General ^> Change visibility ^> Public
+    echo.
+    echo 2. Configurar GitHub Secrets:
+    echo    Settings ^> Secrets and variables ^> Actions ^> New repository secret
+    echo    Añadir estos 5 secrets:
+    echo    - STUDIA_USERNAME (tu usuario StudiaOnline)
+    echo    - STUDIA_PASSWORD (tu contraseña StudiaOnline) 
+    echo    - EMAIL_FROM (tu Gmail)
+    echo    - EMAIL_PASSWORD (app password de Gmail)
+    echo    - EMAIL_TO (destinatarios separados por comas)
+    echo.
+    echo 3. Activar workflow:
+    echo    Actions ^> "StudiaOnline Bot Monitor" ^> Enable workflow
+    echo.
+    echo 4. ¡LISTO! Se ejecuta cada 30 minutos automáticamente
+    echo    - Logs visibles en Actions tab
+    echo    - Solo envía email cuando hay cambios
+    echo    - 100%% GRATIS para siempre
+    echo.
+    echo 📖 Guía completa en README.md
+    echo 📖 Verificación en verificar_github_actions.md
 ) else (
     echo ❌ Error subiendo a GitHub
     echo Verifica la URL del repositorio y tus credenciales
