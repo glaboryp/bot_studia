@@ -1,0 +1,78 @@
+# ==================================
+# BOT STUDIA - ARCHIVOS A IGNORAR
+# ==================================
+
+# Configuración sensible
+.env
+
+# Estado y logs del bot (se generan automáticamente)
+cursos_anteriores.json
+*.log
+
+# Archivos de debug HTML (si se generan)
+debug_*.html
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Entornos virtuales
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# IDEs y editores
+.vscode/
+.idea/
+*.swp
+*.swo
+.viminfo
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+*.tmp
+*~
+
+# Archivos de respaldo
+*.bak
+*.backup
+*.old
+
+# Archivos temporales de desarrollo
+temp/
+tmp/
+test_*.py
+debug_*.py
+
+# Archivos de documentación temporal (solo durante desarrollo)
+LIMPIEZA_COMPLETADA.md
+ESTADO_*.md
+
+# Credenciales y claves (por seguridad extra)
+*.key
+*.pem
+credentials.json
+config.json
