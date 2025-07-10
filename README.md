@@ -138,9 +138,6 @@ python studia_bot_definitivo.py --monitor
      - `EMAIL_FROM` → tu email de Gmail
      - `EMAIL_PASSWORD` → tu app password de Gmail
      - `EMAIL_TO` → emails destino (separados por comas si son varios)
-    - `SMTP_SERVER` → smtp.gmail.com
-    - `SMTP_PORT` → 587
-    - `STUDIA_URL` → https://studiaonline.org/
 
 3. **Activar el workflow**:
    - El archivo `.github/workflows/monitor.yml` ya está configurado
@@ -183,6 +180,7 @@ bot_studia/
 - Verifica que todos los **GitHub Secrets** están configurados correctamente
 - Ve a Actions → workflow run → logs para ver error específico
 - Consulta `verificar_github_actions.md` para debugging detallado
+- **Error "No module named 'bs4'"**: El archivo `requirements.txt` incluye todas las dependencias necesarias
 
 ### ❌ El bot no encuentra cursos
 - **Es normal** si no hay cursos disponibles en julio/agosto con plazas
