@@ -69,14 +69,6 @@ class StudiaBotDefinitivo:
         
         # Archivo para guardar estado anterior
         self.state_file = 'cursos_anteriores.json'
-        self.session.headers.update({
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-            'Accept-Language': 'es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Connection': 'keep-alive',
-            'Upgrade-Insecure-Requests': '1',
-        })
     
     def login(self):
         """Realizar login en StudiaOnline"""
@@ -476,6 +468,48 @@ class StudiaBotDefinitivo:
         except Exception as e:
             logging.error(f"❌ Error guardando estado: {e}")
     
+    def commit_state_changes(self):
+        """Hacer commit automático del archivo de estado actualizado"""
+        try:
+            import subprocess
+            
+            # Verificar si hay cambios en el archivo de estado
+            result = subprocess.run(['git', 'status', '--porcelain', self.state_file], 
+                                  capture_output=True, text=True, cwd='.')
+            
+            if result.stdout.strip():
+                logging.info("📝 Cambios detectados en archivo de estado, haciendo commit...")
+                
+                # Configurar git user si no está configurado (para GitHub Actions)
+                subprocess.run(['git', 'config', '--global', 'user.email', 'action@github.com'], 
+                             capture_output=True, cwd='.')
+                subprocess.run(['git', 'config', '--global', 'user.name', 'GitHub Action'], 
+                             capture_output=True, cwd='.')
+                
+                # Agregar el archivo
+                subprocess.run(['git', 'add', self.state_file], 
+                             capture_output=True, cwd='.')
+                
+                # Hacer commit
+                commit_msg = f"🤖 Update courses state - {datetime.now().strftime('%Y-%m-%d %H:%M')}"
+                subprocess.run(['git', 'commit', '-m', commit_msg], 
+                             capture_output=True, cwd='.')
+                
+                # Push
+                push_result = subprocess.run(['git', 'push'], 
+                                           capture_output=True, text=True, cwd='.')
+                
+                if push_result.returncode == 0:
+                    logging.info("✅ Estado actualizado y sincronizado con GitHub")
+                else:
+                    logging.warning(f"⚠️ Error haciendo push: {push_result.stderr}")
+            else:
+                logging.info("ℹ️ Sin cambios en archivo de estado")
+                
+        except Exception as e:
+            logging.error(f"❌ Error en commit automático: {e}")
+            # No es crítico, el bot puede seguir funcionando
+    
     def load_previous_state(self):
         """Cargar estado anterior de cursos desde archivo JSON"""
         try:
@@ -672,11 +706,15 @@ class StudiaBotDefinitivo:
                 
                 # Guardar estado actual
                 self.save_courses_state(current_courses)
+                # Commit automático del estado actualizado
+                self.commit_state_changes()
                 
             else:
                 logging.info("ℹ️ No hay cursos con plazas disponibles")
                 # Guardar estado vacío
                 self.save_courses_state([])
+                # Commit automático del estado actualizado
+                self.commit_state_changes()
             
             logging.info("✅ Verificación completada")
             return True

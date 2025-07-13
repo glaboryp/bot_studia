@@ -135,6 +135,8 @@ python studia_bot_definitivo.py --monitor
      - `EMAIL_FROM` → tu email de Gmail
      - `EMAIL_PASSWORD` → tu app password de Gmail
      - `EMAIL_TO` → emails destino (separados por comas si son varios)
+   
+   > ⚠️ **IMPORTANTE**: NO necesitas crear `GITHUB_TOKEN` - se proporciona automáticamente
 
 3. **Activar el workflow**:
    - El archivo `.github/workflows/monitor.yml` ya está configurado
@@ -145,6 +147,7 @@ python studia_bot_definitivo.py --monitor
    - Se ejecuta cada 30 minutos, 24/7 GRATIS
    - Solo envía email cuando hay cambios reales
    - Logs detallados visibles en Actions → workflow runs
+   - El bot actualiza automáticamente su estado entre ejecuciones
 
 
 ## 📁 Estructura del Proyecto
@@ -188,6 +191,12 @@ bot_studia/
 - **Es normal** si no hay cambios en los cursos
 - El bot **solo envía email cuando detecta cambios reales** (nuevos cursos o más plazas)
 - Usa `python studia_bot_definitivo.py --once` localmente para verificar funcionamiento
+
+### 💾 Archivo de estado (`cursos_anteriores.json`)
+- **Propósito**: Almacena el estado anterior para detectar cambios
+- **Ubicación**: Raíz del repositorio (incluido en el repo)
+- **Actualización automática**: El bot hace commit automático tras cada verificación
+- **Importante**: Si eliminas este archivo, la próxima ejecución detectará todos los cursos como "nuevos"
 
 ## 📝 Logs y Monitoreo
 
