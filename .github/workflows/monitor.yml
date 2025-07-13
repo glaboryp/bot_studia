@@ -32,6 +32,5 @@ jobs:
         EMAIL_TO: ${{ secrets.EMAIL_TO }}
         SMTP_SERVER: smtp.gmail.com
         SMTP_PORT: 587
-        STUDIA_URL: https://formacion.studiaonline.com
       run: |
         python studia_bot_definitivo.py --once

@@ -45,9 +45,6 @@ EMAIL_PASSWORD=tu_contraseña_de_aplicacion
 EMAIL_TO=destinatario@gmail.com
 SMTP_SERVER=smtp.gmail.com
 SMTP_PORT=587
-
-# URL de StudiaOnline
-STUDIA_URL=https://studiaonline.org/
 ```
 
 ### 4. Configurar Gmail
