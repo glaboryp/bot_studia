@@ -6,7 +6,6 @@
 .env
 
 # Estado y logs del bot (se generan automáticamente)
-cursos_anteriores.json
 *.log
 
 # Archivos de debug HTML (si se generan)
