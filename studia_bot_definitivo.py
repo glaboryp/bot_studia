@@ -491,7 +491,7 @@ class StudiaBotDefinitivo:
                              capture_output=True, cwd='.')
                 
                 # Hacer commit
-                commit_msg = f"🤖 Update courses state - {datetime.now().strftime('%Y-%m-%d %H:%M')}"
+                commit_msg = f"🤖 Actualizar el estado anterior - {datetime.now().strftime('%Y-%m-%d %H:%M')}"
                 subprocess.run(['git', 'commit', '-m', commit_msg], 
                              capture_output=True, cwd='.')
                 
