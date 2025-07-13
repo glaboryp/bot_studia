@@ -32,8 +32,10 @@ logging.basicConfig(
 
 class StudiaBotDefinitivo:
     def __init__(self):
-        # URLs y credenciales
-        self.base_url = os.getenv('STUDIA_URL', 'https://studiaonline.org/')
+        # URLs y credenciales - FORZAR URL CORRECTA
+        self.base_url = 'https://studiaonline.org/'  # Hardcoded para evitar problemas
+        print(f"🎯 URL hardcoded (forzada): {self.base_url}")
+        
         self.username = os.getenv('STUDIA_USERNAME')
         self.password = os.getenv('STUDIA_PASSWORD')
         
@@ -55,6 +57,15 @@ class StudiaBotDefinitivo:
         
         # Session para cookies
         self.session = requests.Session()
+        # Configurar headers robustos para evitar bloqueos
+        self.session.headers.update({
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Accept-Language': 'es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1',
+        })
         
         # Archivo para guardar estado anterior
         self.state_file = 'cursos_anteriores.json'
@@ -71,9 +82,37 @@ class StudiaBotDefinitivo:
         """Realizar login en StudiaOnline"""
         try:
             logging.info("🔐 Iniciando proceso de login...")
+            logging.info(f"🌐 URL base configurada: {self.base_url}")
+            
+            # Verificación de DNS antes de intentar conexión
+            import socket
+            try:
+                domain = 'studiaonline.org'
+                ip_address = socket.gethostbyname(domain)
+                logging.info(f"🔍 DNS lookup para {domain}: {ip_address}")
+            except socket.gaierror as e:
+                logging.error(f"❌ Error de DNS para {domain}: {e}")
+                return False
+            
+            # Validar que la URL es la correcta
+            if 'studiaonline.com' in self.base_url:
+                logging.error("❌ URL INCORRECTA: studiaonline.com detectado")
+                logging.error("✅ URL CORRECTA debe ser: studiaonline.org")
+                return False
             
             # Obtener página de login
+            logging.info(f"📡 Conectando a: {self.base_url}")
             response = self.session.get(self.base_url, timeout=30)
+            
+            # Verificar que no hubo redirección a dominio incorrecto
+            final_url = response.url
+            logging.info(f"🔗 URL final después de redirecciones: {final_url}")
+            
+            if 'studiaonline.com' in final_url or 'hugedomains.com' in final_url:
+                logging.error(f"❌ Redirigido a dominio incorrecto: {final_url}")
+                logging.error("💡 Esto puede indicar que studiaonline.org no está disponible")
+                return False
+            
             response.raise_for_status()
             
             soup = BeautifulSoup(response.text, 'html.parser')
