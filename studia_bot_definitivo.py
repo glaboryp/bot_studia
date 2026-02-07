@@ -53,7 +53,7 @@ class StudiaBotDefinitivo:
         
         # Configuración específica
         self.target_months = ['julio', 'agosto']
-        self.target_year = '2025'
+        self.target_year = '2026'
         
         # Session para cookies
         self.session = requests.Session()
