@@ -651,8 +651,8 @@ class StudiaBotDefinitivo:
                     body += f"   📈 {course['plazas_anteriores']} → {course['plazas_disponibles']} plazas\n\n"
             
             body += f"🕐 Verificado: {datetime.now().strftime('%d/%m/%Y %H:%M')}\n"
-            body += "🔄 Próxima verificación en 30 minutos\n\n"
-            body += "💡 Bot monitoreando automáticamente cada 30 minutos"
+            body += "🔄 Próxima verificación en 10 minutos\n\n"
+            body += "💡 Bot monitoreando automáticamente cada 10 minutos"
             
             msg.attach(MIMEText(body, 'plain', 'utf-8'))
             
@@ -724,9 +724,9 @@ class StudiaBotDefinitivo:
             return False
     
     def run_monitoring(self):
-        """Ejecutar monitoreo continuo cada 30 minutos"""
+        """Ejecutar monitoreo continuo cada 10 minutos"""
         logging.info("🔄 === INICIANDO MONITOREO AUTOMÁTICO ===")
-        logging.info("⏰ Verificación cada 30 minutos")
+        logging.info("⏰ Verificación cada 10 minutos")
         logging.info("🚨 Email solo cuando hay NUEVAS plazas")
         logging.info("🏁 Presiona Ctrl+C para detener")
         print()
@@ -735,9 +735,9 @@ class StudiaBotDefinitivo:
         logging.info("🔍 Verificación inicial...")
         self.run_search()
         
-        # Configurar verificaciones cada 30 minutos
+        # Configurar verificaciones cada 10 minutos
         schedule.clear()
-        schedule.every(30).minutes.do(self.run_search)
+        schedule.every(10).minutes.do(self.run_search)
         
         try:
             while True:
@@ -762,7 +762,7 @@ def main():
     print("🤖 Bot StudiaOnline - Versión MONITOREO")
     print("=" * 50)
     print("🚨 Solo envía email cuando HAY CAMBIOS")
-    print("⏰ Verificación automática cada 30 minutos")
+    print("⏰ Verificación automática cada 10 minutos")
     print("🎯 Detecta NUEVAS plazas disponibles")
     print("=" * 50)
     
@@ -797,13 +797,13 @@ def main():
         success = bot.run_search()
         print("✅ Completado" if success else "❌ Error")
     elif len(sys.argv) > 1 and sys.argv[1] == '--monitor':
-        print("🔄 Iniciando monitoreo automático cada 30 minutos...")
+        print("🔄 Iniciando monitoreo automático cada 10 minutos...")
         print("💡 Solo recibirás email cuando haya NUEVAS plazas")
         bot.run_monitoring()
     else:
         print("💡 Opciones disponibles:")
         print("   --once     : Verificación única")
-        print("   --monitor  : Monitoreo cada 30 minutos")
+        print("   --monitor  : Monitoreo cada 10 minutos")
         print()
         print("🔄 Iniciando monitoreo por defecto...")
         bot.run_monitoring()
