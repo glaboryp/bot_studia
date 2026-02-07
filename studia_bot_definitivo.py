@@ -201,7 +201,7 @@ class StudiaBotDefinitivo:
                 logging.warning(f"⚠️ LEGACY: JSON malformado, usando regex como backup: {e}")
                 logging.warning(f"⚠️ NOTA: El filtro de 'lugar vacío' solo se aplica con JSON válido")
                 # Fallback a regex si el JSON está malformado
-                course_pattern = r'"nombre":\s*"([^"]*(?:julio|agosto)[^"]*2025[^"]*)"[^}]*"grupo_seleccionado":\s*\{[^}]*"capacidad":\s*(\d+)[^}]*"ocupacion":\s*(\d+)'
+                course_pattern = r'"nombre":\s*"([^"]*(?:julio|agosto)[^"]*2026[^"]*)"[^}]*"grupo_seleccionado":\s*\{[^}]*"capacidad":\s*(\d+)[^}]*"ocupacion":\s*(\d+)'
                 matches = re.finditer(course_pattern, html_content, re.IGNORECASE)
                 
                 for match in matches:
@@ -393,9 +393,9 @@ class StudiaBotDefinitivo:
                                 has_valid_lugar = True
                                 break
                     
-                    # Verificar que es de julio o agosto 2025, NO es un semestre y tiene lugar válido
+                    # Verificar que es de julio o agosto 2026, NO es un semestre y tiene lugar válido
                     is_target_month = any(month in nombre.lower() for month in self.target_months)
-                    is_target_year = '2025' in nombre
+                    is_target_year = '2026' in nombre
                     is_not_semestre = 'semestre' not in nombre.lower()
                     
                     if is_target_month and is_target_year and is_not_semestre and has_valid_lugar:
@@ -563,11 +563,11 @@ class StudiaBotDefinitivo:
             msg = MIMEMultipart()
             msg['From'] = self.email_from
             msg['To'] = ', '.join(self.email_to)  # Unir múltiples destinatarios con comas
-            msg['Subject'] = f"StudiaOnline - Cursos Disponibles Julio/Agosto 2025 ({datetime.now().strftime('%d/%m/%Y')})"
+            msg['Subject'] = f"StudiaOnline - Cursos Disponibles Julio/Agosto 2026 ({datetime.now().strftime('%d/%m/%Y')})"
             
             if courses:
                 body = "🎓 CURSOS CON PLAZAS DISPONIBLES\n"
-                body += "📅 JULIO Y AGOSTO 2025\n"
+                body += "📅 JULIO Y AGOSTO 2026\n"
                 body += "=" * 50 + "\n\n"
                 
                 # Separar por mes
@@ -576,7 +576,7 @@ class StudiaBotDefinitivo:
                 
                 # Cursos de JULIO
                 if julio_courses:
-                    body += "📅 JULIO 2025\n"
+                    body += "📅 JULIO 2026\n"
                     body += "-" * 20 + "\n"
                     for i, course in enumerate(julio_courses, 1):
                         body += f"{i}. {course['title']}\n"
@@ -584,7 +584,7 @@ class StudiaBotDefinitivo:
                 
                 # Cursos de AGOSTO
                 if agosto_courses:
-                    body += "📅 AGOSTO 2025\n"
+                    body += "📅 AGOSTO 2026\n"
                     body += "-" * 20 + "\n"
                     for i, course in enumerate(agosto_courses, 1):
                         body += f"{i}. {course['title']}\n"
@@ -600,7 +600,7 @@ class StudiaBotDefinitivo:
                 body = "📋 REVISIÓN STUDIAONLINE\n"
                 body += "=" * 30 + "\n\n"
                 body += "❌ No hay cursos con plazas disponibles\n"
-                body += "   para julio y agosto 2025\n\n"
+                body += "   para julio y agosto 2026\n\n"
                 body += f"Búsqueda: {datetime.now().strftime('%d/%m/%Y %H:%M')}\n"
                 body += "📧 Te notificaré cuando haya plazas"
             
