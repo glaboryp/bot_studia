@@ -4,7 +4,7 @@ Un bot automatizado que monitorea continuamente los cursos de StudiaOnline, filt
 
 ## 🚀 Características
 
-- **Monitoreo 24/7**: Se ejecuta cada 30 minutos automáticamente con GitHub Actions
+- **Monitoreo 24/7**: Se ejecuta cada 10 minutos automáticamente con GitHub Actions
 - **Filtrado inteligente**: Solo cursos de julio y agosto con plazas disponibles
 - **Notificaciones inteligentes**: Email solo cuando hay cambios reales
 - **Despliegue gratuito**: GitHub Actions
@@ -79,9 +79,9 @@ Ejecuta una sola verificación y termina. Ideal para:
 ```bash
 python studia_bot_definitivo.py --monitor
 ```
-Inicia el monitoreo automático cada 30 minutos. El bot:
+Inicia el monitoreo automático cada 10 minutos. El bot:
 - Se ejecuta inmediatamente al iniciarlo
-- Luego se repite automáticamente cada 30 minutos
+- Luego se repite automáticamente cada 10 minutos
 - Solo envía email cuando detecta cambios (cursos nuevos o más plazas)
 - Sigue ejecutándose hasta que lo detengas con `Ctrl+C`
 
@@ -113,10 +113,10 @@ python studia_bot_definitivo.py --monitor
 
 # El bot mostrará:
 # 🔄 === INICIANDO MONITOREO AUTOMÁTICO ===
-# ⏰ Verificación cada 30 minutos
+# ⏰ Verificación cada 10 minutos
 # 🚨 Email solo cuando hay NUEVAS plazas
 # 
-# Y se ejecutará automáticamente cada 30 minutos
+# Y se ejecutará automáticamente cada 10 minutos
 # Solo recibirás email cuando haya cambios reales
 ```
 
@@ -144,7 +144,7 @@ python studia_bot_definitivo.py --monitor
    - O ejecuta manualmente: Actions → "Run workflow" → "Run workflow"
 
 4. **¡Funciona automáticamente!**:
-   - Se ejecuta cada 30 minutos, 24/7 GRATIS
+   - Se ejecuta cada 10 minutos, 24/7 GRATIS
    - Solo envía email cuando hay cambios reales
    - Logs detallados visibles en Actions → workflow runs
    - El bot actualiza automáticamente su estado entre ejecuciones
@@ -202,7 +202,7 @@ bot_studia/
 
 ### GitHub Actions:
 - **Logs en tiempo real**: Repository → Actions → workflow run → "monitor_courses"
-- **Frecuencia**: Cada 30 minutos automáticamente  
+- **Frecuencia**: Cada 10 minutos automáticamente  
 - **Persistencia**: Logs disponibles por 90 días
 
 ### Ejecución local:

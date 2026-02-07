@@ -86,12 +86,6 @@ class StudiaBotDefinitivo:
                 logging.error(f"❌ Error de DNS para {domain}: {e}")
                 return False
             
-            # Validar que la URL es la correcta
-            if 'studiaonline.com' in self.base_url:
-                logging.error("❌ URL INCORRECTA: studiaonline.com detectado")
-                logging.error("✅ URL CORRECTA debe ser: studiaonline.org")
-                return False
-            
             # Obtener página de login
             logging.info(f"📡 Conectando a: {self.base_url}")
             response = self.session.get(self.base_url, timeout=30)
@@ -393,12 +387,15 @@ class StudiaBotDefinitivo:
                                 has_valid_lugar = True
                                 break
                     
+                    # Excepción especial: permitir "Residencia Tafira Atlantic Club" aunque el lugar esté vacío
+                    is_tafira_exception = 'residencia tafira atlantic club' in nombre.lower()
+                    
                     # Verificar que es de julio o agosto 2026, NO es un semestre y tiene lugar válido
                     is_target_month = any(month in nombre.lower() for month in self.target_months)
-                    is_target_year = '2026' in nombre
+                    is_target_year = '2026' in nombre or '2025' in nombre
                     is_not_semestre = 'semestre' not in nombre.lower()
                     
-                    if is_target_month and is_target_year and is_not_semestre and has_valid_lugar:
+                    if is_target_month and is_target_year and is_not_semestre and (has_valid_lugar or is_tafira_exception):
                         plazas_disponibles = capacidad - ocupacion
                         
                         # Limpiar nombre completamente
