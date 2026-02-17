@@ -3,30 +3,36 @@
     "title": "La Masada - junio/julio 2026",
     "month": "julio",
     "plazas_disponibles": 6,
-    "timestamp": "2026-02-17T09:12:34.965349"
+    "timestamp": "2026-02-17T10:13:01.602116"
+  },
+  "La Barquera (CANTABRIA) - junio/julio 2026 - pf_julio": {
+    "title": "La Barquera (CANTABRIA) - junio/julio 2026 - pf",
+    "month": "julio",
+    "plazas_disponibles": 1,
+    "timestamp": "2026-02-17T10:13:01.602128"
   },
   "Can Soteras (BARCELONA)- julio 2026- bf_julio": {
     "title": "Can Soteras (BARCELONA)- julio 2026- bf",
     "month": "julio",
     "plazas_disponibles": 2,
-    "timestamp": "2026-02-17T09:12:34.965359"
+    "timestamp": "2026-02-17T10:13:01.602132"
   },
   "Curso anual Repaso n -Coniston (MANCHESTER) - julio 2026 - mof_julio": {
     "title": "Curso anual Repaso n -Coniston (MANCHESTER) - julio 2026 - mof",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-02-17T09:12:34.965362"
+    "timestamp": "2026-02-17T10:13:01.602137"
   },
   "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof_julio": {
     "title": "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof",
     "month": "julio",
     "plazas_disponibles": 7,
-    "timestamp": "2026-02-17T09:12:34.965365"
+    "timestamp": "2026-02-17T10:13:01.602141"
   },
   "Alcor (MADRID) - agosto 2026 – mof_agosto": {
     "title": "Alcor (MADRID) - agosto 2026 – mof",
     "month": "agosto",
     "plazas_disponibles": 3,
-    "timestamp": "2026-02-17T09:12:34.965367"
+    "timestamp": "2026-02-17T10:13:01.602145"
   }
 }
