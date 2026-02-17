@@ -3,36 +3,42 @@
     "title": "La Masada - junio/julio 2026",
     "month": "julio",
     "plazas_disponibles": 6,
-    "timestamp": "2026-02-17T10:13:01.602116"
+    "timestamp": "2026-02-17T11:13:20.696967"
   },
-  "La Barquera (CANTABRIA) - junio/julio 2026 - pf_julio": {
-    "title": "La Barquera (CANTABRIA) - junio/julio 2026 - pf",
+  "Curso anual repaso n - El Rincón (VALLADOLID) - julio 2026 - dlnf_julio": {
+    "title": "Curso anual repaso n - El Rincón (VALLADOLID) - julio 2026 - dlnf",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-02-17T10:13:01.602128"
+    "timestamp": "2026-02-17T11:13:20.696977"
   },
   "Can Soteras (BARCELONA)- julio 2026- bf_julio": {
     "title": "Can Soteras (BARCELONA)- julio 2026- bf",
     "month": "julio",
     "plazas_disponibles": 2,
-    "timestamp": "2026-02-17T10:13:01.602132"
+    "timestamp": "2026-02-17T11:13:20.696980"
   },
   "Curso anual Repaso n -Coniston (MANCHESTER) - julio 2026 - mof_julio": {
     "title": "Curso anual Repaso n -Coniston (MANCHESTER) - julio 2026 - mof",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-02-17T10:13:01.602137"
+    "timestamp": "2026-02-17T11:13:20.696982"
   },
   "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof_julio": {
     "title": "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof",
     "month": "julio",
     "plazas_disponibles": 7,
-    "timestamp": "2026-02-17T10:13:01.602141"
+    "timestamp": "2026-02-17T11:13:20.696985"
   },
   "Alcor (MADRID) - agosto 2026 – mof_agosto": {
     "title": "Alcor (MADRID) - agosto 2026 – mof",
     "month": "agosto",
     "plazas_disponibles": 3,
-    "timestamp": "2026-02-17T10:13:01.602145"
+    "timestamp": "2026-02-17T11:13:20.696987"
+  },
+  "Curso anual repaso n - EN INGLÉS - Jahazí (KENIA) - agosto/sept 2026 - asr_agosto": {
+    "title": "Curso anual repaso n - EN INGLÉS - Jahazí (KENIA) - agosto/sept 2026 - asr",
+    "month": "agosto",
+    "plazas_disponibles": 1,
+    "timestamp": "2026-02-17T11:13:20.696990"
   }
 }
