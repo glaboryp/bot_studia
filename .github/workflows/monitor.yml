@@ -2,8 +2,8 @@ name: StudiaOnline Bot Monitor
 
 on:
   schedule:
-    # Ejecuta cada 30 minutos
-    - cron: '*/30 * * * *'
+    # Ejecuta cada 10 minutos
+    - cron: '*/10 * * * *'
   workflow_dispatch:  # Permite ejecutar manualmente
 
 jobs:
