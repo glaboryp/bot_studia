@@ -3,36 +3,42 @@
     "title": "La Masada - junio/julio 2026",
     "month": "julio",
     "plazas_disponibles": 5,
-    "timestamp": "2026-03-10T10:05:13.866182"
+    "timestamp": "2026-03-10T10:57:20.726090"
   },
   "Islabe Pb (BILBAO) - junio/julio 2026 - pf_julio": {
     "title": "Islabe Pb (BILBAO) - junio/julio 2026 - pf",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-03-10T10:05:13.866194"
+    "timestamp": "2026-03-10T10:57:20.726129"
+  },
+  "La Barquera (CANTABRIA) - junio/julio 2026 - pf_julio": {
+    "title": "La Barquera (CANTABRIA) - junio/julio 2026 - pf",
+    "month": "julio",
+    "plazas_disponibles": 1,
+    "timestamp": "2026-03-10T10:57:20.726133"
   },
   "Can Soteras (BARCELONA)- julio 2026- bf_julio": {
     "title": "Can Soteras (BARCELONA)- julio 2026- bf",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-03-10T10:05:13.866228"
+    "timestamp": "2026-03-10T10:57:20.726137"
   },
   "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof_julio": {
     "title": "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof",
     "month": "julio",
     "plazas_disponibles": 3,
-    "timestamp": "2026-03-10T10:05:13.866233"
+    "timestamp": "2026-03-10T10:57:20.726141"
   },
   "ca de CINE-Campolargo (ZARAGOZA)-agosto 2026-alf_agosto": {
     "title": "ca de CINE-Campolargo (ZARAGOZA)-agosto 2026-alf",
     "month": "agosto",
     "plazas_disponibles": 12,
-    "timestamp": "2026-03-10T10:05:13.866236"
+    "timestamp": "2026-03-10T10:57:20.726144"
   },
   "Can Viladoms (BARCELONA )- agosto 2026- bf_agosto": {
     "title": "Can Viladoms (BARCELONA )- agosto 2026- bf",
     "month": "agosto",
     "plazas_disponibles": 6,
-    "timestamp": "2026-03-10T10:05:13.866239"
+    "timestamp": "2026-03-10T10:57:20.726149"
   }
 }
