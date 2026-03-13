@@ -3,54 +3,60 @@
     "title": "La Masada - junio/julio 2026",
     "month": "julio",
     "plazas_disponibles": 4,
-    "timestamp": "2026-03-13T08:43:20.509250"
+    "timestamp": "2026-03-13T09:25:50.832160"
   },
   "Islabe Pb (BILBAO) - junio/julio 2026 - pf_julio": {
     "title": "Islabe Pb (BILBAO) - junio/julio 2026 - pf",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-03-13T08:43:20.509260"
+    "timestamp": "2026-03-13T09:25:50.832171"
   },
   "Can Soteras (BARCELONA)- julio 2026- bf_julio": {
     "title": "Can Soteras (BARCELONA)- julio 2026- bf",
     "month": "julio",
     "plazas_disponibles": 2,
-    "timestamp": "2026-03-13T08:43:20.509263"
+    "timestamp": "2026-03-13T09:25:50.832175"
   },
   "Láriz (VIZCAYA) - julio 2026 - pf_julio": {
     "title": "Láriz (VIZCAYA) - julio 2026 - pf",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-03-13T08:43:20.509266"
+    "timestamp": "2026-03-13T09:25:50.832178"
   },
   "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof_julio": {
     "title": "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof",
     "month": "julio",
     "plazas_disponibles": 3,
-    "timestamp": "2026-03-13T08:43:20.509269"
+    "timestamp": "2026-03-13T09:25:50.832182"
+  },
+  "Hotel Villa de Sallent (FORMIGAL) - agosto 2026 - pf_agosto": {
+    "title": "Hotel Villa de Sallent (FORMIGAL) - agosto 2026 - pf",
+    "month": "agosto",
+    "plazas_disponibles": 1,
+    "timestamp": "2026-03-13T09:25:50.832185"
   },
   "C.M. Saomar (VALENCIA) - agosto 2026 - alf_agosto": {
     "title": "C.M. Saomar (VALENCIA) - agosto 2026 - alf",
     "month": "agosto",
     "plazas_disponibles": 1,
-    "timestamp": "2026-03-13T08:43:20.509271"
+    "timestamp": "2026-03-13T09:25:50.832188"
   },
   "ca de CINE-Campolargo (ZARAGOZA)-agosto 2026-alf_agosto": {
     "title": "ca de CINE-Campolargo (ZARAGOZA)-agosto 2026-alf",
     "month": "agosto",
     "plazas_disponibles": 9,
-    "timestamp": "2026-03-13T08:43:20.509273"
+    "timestamp": "2026-03-13T09:25:50.832193"
   },
   "Dworek (POLONIA) - agosto 2026- asr_agosto": {
     "title": "Dworek (POLONIA) - agosto 2026- asr",
     "month": "agosto",
     "plazas_disponibles": 1,
-    "timestamp": "2026-03-13T08:43:20.509276"
+    "timestamp": "2026-03-13T09:25:50.832196"
   },
   "Can Viladoms (BARCELONA )- agosto 2026- bf_agosto": {
     "title": "Can Viladoms (BARCELONA )- agosto 2026- bf",
     "month": "agosto",
     "plazas_disponibles": 6,
-    "timestamp": "2026-03-13T08:43:20.509278"
+    "timestamp": "2026-03-13T09:25:50.832198"
   }
 }
