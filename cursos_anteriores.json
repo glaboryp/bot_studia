@@ -3,18 +3,24 @@
     "title": "La Masada - junio/julio 2026",
     "month": "julio",
     "plazas_disponibles": 4,
-    "timestamp": "2026-03-25T14:46:38.893836"
+    "timestamp": "2026-03-25T15:52:49.609908"
   },
   "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof_julio": {
     "title": "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof",
     "month": "julio",
     "plazas_disponibles": 3,
-    "timestamp": "2026-03-25T14:46:38.893846"
+    "timestamp": "2026-03-25T15:52:49.609918"
+  },
+  "Alcor (MADRID) - agosto 2026 – mof_agosto": {
+    "title": "Alcor (MADRID) - agosto 2026 – mof",
+    "month": "agosto",
+    "plazas_disponibles": 1,
+    "timestamp": "2026-03-25T15:52:49.609922"
   },
   "ca de CINE-Campolargo (ZARAGOZA)-agosto 2026-alf_agosto": {
     "title": "ca de CINE-Campolargo (ZARAGOZA)-agosto 2026-alf",
     "month": "agosto",
     "plazas_disponibles": 7,
-    "timestamp": "2026-03-25T14:46:38.893848"
+    "timestamp": "2026-03-25T15:52:49.609925"
   }
 }
