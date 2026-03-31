@@ -3,18 +3,24 @@
     "title": "La Masada - junio/julio 2026",
     "month": "julio",
     "plazas_disponibles": 3,
-    "timestamp": "2026-03-31T19:24:17.099347"
+    "timestamp": "2026-03-31T19:48:07.030617"
+  },
+  "Islabe Pb (BILBAO) - junio/julio 2026 - pf_julio": {
+    "title": "Islabe Pb (BILBAO) - junio/julio 2026 - pf",
+    "month": "julio",
+    "plazas_disponibles": 1,
+    "timestamp": "2026-03-31T19:48:07.030636"
   },
   "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof_julio": {
     "title": "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof",
     "month": "julio",
     "plazas_disponibles": 2,
-    "timestamp": "2026-03-31T19:24:17.099357"
+    "timestamp": "2026-03-31T19:48:07.030643"
   },
   "ca de CINE-Campolargo (ZARAGOZA)-agosto 2026-alf_agosto": {
     "title": "ca de CINE-Campolargo (ZARAGOZA)-agosto 2026-alf",
     "month": "agosto",
     "plazas_disponibles": 6,
-    "timestamp": "2026-03-31T19:24:17.099359"
+    "timestamp": "2026-03-31T19:48:07.030650"
   }
 }
