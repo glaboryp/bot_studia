@@ -3,36 +3,42 @@
     "title": "La Masada - junio/julio 2026",
     "month": "julio",
     "plazas_disponibles": 3,
-    "timestamp": "2026-04-01T12:43:33.221634"
+    "timestamp": "2026-04-01T13:16:58.351307"
   },
   "Islabe Pb (BILBAO) - junio/julio 2026 - pf_julio": {
     "title": "Islabe Pb (BILBAO) - junio/julio 2026 - pf",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-04-01T12:43:33.221645"
+    "timestamp": "2026-04-01T13:16:58.351326"
   },
   "Can Soteras (BARCELONA)- julio 2026- bf_julio": {
     "title": "Can Soteras (BARCELONA)- julio 2026- bf",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-04-01T12:43:33.221647"
+    "timestamp": "2026-04-01T13:16:58.351330"
   },
   "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof_julio": {
     "title": "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof",
     "month": "julio",
     "plazas_disponibles": 2,
-    "timestamp": "2026-04-01T12:43:33.221650"
+    "timestamp": "2026-04-01T13:16:58.351335"
+  },
+  "Hotel Villa de Sallent (FORMIGAL) - agosto 2026 - pf_agosto": {
+    "title": "Hotel Villa de Sallent (FORMIGAL) - agosto 2026 - pf",
+    "month": "agosto",
+    "plazas_disponibles": 1,
+    "timestamp": "2026-04-01T13:16:58.351339"
   },
   "Los Enebros (NAVALAGAMELLA-MADRID) - agosto 2026 - mof_agosto": {
     "title": "Los Enebros (NAVALAGAMELLA-MADRID) - agosto 2026 - mof",
     "month": "agosto",
     "plazas_disponibles": 1,
-    "timestamp": "2026-04-01T12:43:33.221652"
+    "timestamp": "2026-04-01T13:16:58.351344"
   },
   "ca de CINE-Campolargo (ZARAGOZA)-agosto 2026-alf_agosto": {
     "title": "ca de CINE-Campolargo (ZARAGOZA)-agosto 2026-alf",
     "month": "agosto",
     "plazas_disponibles": 5,
-    "timestamp": "2026-04-01T12:43:33.221654"
+    "timestamp": "2026-04-01T13:16:58.351348"
   }
 }
