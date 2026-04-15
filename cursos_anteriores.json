@@ -3,24 +3,30 @@
     "title": "La Masada - junio/julio 2026",
     "month": "julio",
     "plazas_disponibles": 4,
-    "timestamp": "2026-04-15T06:52:39.234471"
+    "timestamp": "2026-04-15T08:25:54.661478"
   },
   "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof_julio": {
     "title": "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-04-15T06:52:39.234505"
+    "timestamp": "2026-04-15T08:25:54.661492"
   },
   "ca de CINE-Campolargo (ZARAGOZA)-agosto 2026-alf_agosto": {
     "title": "ca de CINE-Campolargo (ZARAGOZA)-agosto 2026-alf",
     "month": "agosto",
     "plazas_disponibles": 1,
-    "timestamp": "2026-04-15T06:52:39.234509"
+    "timestamp": "2026-04-15T08:25:54.661497"
+  },
+  "Can Viladoms (BARCELONA )- agosto 2026- bf_agosto": {
+    "title": "Can Viladoms (BARCELONA )- agosto 2026- bf",
+    "month": "agosto",
+    "plazas_disponibles": 1,
+    "timestamp": "2026-04-15T08:25:54.661501"
   },
   "Láriz (VIZCAYA) - agosto/septiembre 2026 - pf_agosto": {
     "title": "Láriz (VIZCAYA) - agosto/septiembre 2026 - pf",
     "month": "agosto",
     "plazas_disponibles": 1,
-    "timestamp": "2026-04-15T06:52:39.234511"
+    "timestamp": "2026-04-15T08:25:54.661506"
   }
 }
