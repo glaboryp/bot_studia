@@ -3,36 +3,42 @@
     "title": "La Masada - junio/julio 2026",
     "month": "julio",
     "plazas_disponibles": 5,
-    "timestamp": "2026-04-20T20:09:01.260329"
+    "timestamp": "2026-04-20T21:00:19.728065"
   },
   "Can Soteras (BARCELONA)- julio 2026- bf_julio": {
     "title": "Can Soteras (BARCELONA)- julio 2026- bf",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-04-20T20:09:01.260339"
+    "timestamp": "2026-04-20T21:00:19.728121"
   },
   "Haus Hardtberg (ALEMANIA)-julio 2026-alf_julio": {
     "title": "Haus Hardtberg (ALEMANIA)-julio 2026-alf",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-04-20T20:09:01.260341"
+    "timestamp": "2026-04-20T21:00:19.728126"
   },
-  "Las Acacias - (VIGO. PONTEVEDRA) - agosto 2026_agosto": {
-    "title": "Las Acacias - (VIGO. PONTEVEDRA) - agosto 2026",
+  "Villa Loarre (PAMPLONA) - agosto 2026 - pf_agosto": {
+    "title": "Villa Loarre (PAMPLONA) - agosto 2026 - pf",
     "month": "agosto",
     "plazas_disponibles": 1,
-    "timestamp": "2026-04-20T20:09:01.260344"
+    "timestamp": "2026-04-20T21:00:19.728129"
+  },
+  "Can Soteras (BARCELONA) - agosto 2026 - bf_agosto": {
+    "title": "Can Soteras (BARCELONA) - agosto 2026 - bf",
+    "month": "agosto",
+    "plazas_disponibles": 1,
+    "timestamp": "2026-04-20T21:00:19.728132"
   },
   "Los Enebros (NAVALAGAMELLA-MADRID) - agosto 2026 - mof_agosto": {
     "title": "Los Enebros (NAVALAGAMELLA-MADRID) - agosto 2026 - mof",
     "month": "agosto",
     "plazas_disponibles": 1,
-    "timestamp": "2026-04-20T20:09:01.260346"
+    "timestamp": "2026-04-20T21:00:19.728134"
   },
   "ca de CINE-Campolargo (ZARAGOZA)-agosto 2026-alf_agosto": {
     "title": "ca de CINE-Campolargo (ZARAGOZA)-agosto 2026-alf",
     "month": "agosto",
     "plazas_disponibles": 3,
-    "timestamp": "2026-04-20T20:09:01.260348"
+    "timestamp": "2026-04-20T21:00:19.728137"
   }
 }
