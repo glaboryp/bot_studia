@@ -2,31 +2,37 @@
   "La Masada - junio/julio 2026_julio": {
     "title": "La Masada - junio/julio 2026",
     "month": "julio",
-    "plazas_disponibles": 5,
-    "timestamp": "2026-04-22T19:41:06.127874"
+    "plazas_disponibles": 4,
+    "timestamp": "2026-04-22T20:37:30.150279"
   },
   "Can Soteras (BARCELONA)- julio 2026- bf_julio": {
     "title": "Can Soteras (BARCELONA)- julio 2026- bf",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-04-22T19:41:06.127883"
+    "timestamp": "2026-04-22T20:37:30.150290"
   },
   "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof_julio": {
     "title": "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-04-22T19:41:06.127886"
+    "timestamp": "2026-04-22T20:37:30.150293"
   },
   "C.M. Saomar (VALENCIA) - agosto 2026 - alf_agosto": {
     "title": "C.M. Saomar (VALENCIA) - agosto 2026 - alf",
     "month": "agosto",
+    "plazas_disponibles": 2,
+    "timestamp": "2026-04-22T20:37:30.150295"
+  },
+  "Tramacastilla (HUESCA) - agosto 2026 - alf_agosto": {
+    "title": "Tramacastilla (HUESCA) - agosto 2026 - alf",
+    "month": "agosto",
     "plazas_disponibles": 1,
-    "timestamp": "2026-04-22T19:41:06.127889"
+    "timestamp": "2026-04-22T20:37:30.150297"
   },
   "Curso anual repaso n - EN INGLÉS - Jahazí (KENIA) - agosto/sept 2026 - asr_agosto": {
     "title": "Curso anual repaso n - EN INGLÉS - Jahazí (KENIA) - agosto/sept 2026 - asr",
     "month": "agosto",
     "plazas_disponibles": 1,
-    "timestamp": "2026-04-22T19:41:06.127891"
+    "timestamp": "2026-04-22T20:37:30.150300"
   }
 }
