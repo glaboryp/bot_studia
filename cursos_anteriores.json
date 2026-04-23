@@ -3,24 +3,30 @@
     "title": "La Masada - junio/julio 2026",
     "month": "julio",
     "plazas_disponibles": 4,
-    "timestamp": "2026-04-23T07:43:51.077974"
+    "timestamp": "2026-04-23T09:14:33.372146"
   },
   "Can Soteras (BARCELONA)- julio 2026- bf_julio": {
     "title": "Can Soteras (BARCELONA)- julio 2026- bf",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-04-23T07:43:51.077982"
+    "timestamp": "2026-04-23T09:14:33.372157"
+  },
+  "La Cañada (VALENCIA) - agosto 2026 - alf_agosto": {
+    "title": "La Cañada (VALENCIA) - agosto 2026 - alf",
+    "month": "agosto",
+    "plazas_disponibles": 1,
+    "timestamp": "2026-04-23T09:14:33.372160"
   },
   "C.M. Saomar (VALENCIA) - agosto 2026 - alf_agosto": {
     "title": "C.M. Saomar (VALENCIA) - agosto 2026 - alf",
     "month": "agosto",
-    "plazas_disponibles": 2,
-    "timestamp": "2026-04-23T07:43:51.077984"
+    "plazas_disponibles": 1,
+    "timestamp": "2026-04-23T09:14:33.372162"
   },
   "Can Viladoms (BARCELONA )- agosto 2026- bf_agosto": {
     "title": "Can Viladoms (BARCELONA )- agosto 2026- bf",
     "month": "agosto",
     "plazas_disponibles": 1,
-    "timestamp": "2026-04-23T07:43:51.077986"
+    "timestamp": "2026-04-23T09:14:33.372164"
   }
 }
