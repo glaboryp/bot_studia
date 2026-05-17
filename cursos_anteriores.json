@@ -2,7 +2,13 @@
   "Can Soteras (BARCELONA)- julio 2026- bf_julio": {
     "title": "Can Soteras (BARCELONA)- julio 2026- bf",
     "month": "julio",
-    "plazas_disponibles": 2,
-    "timestamp": "2026-05-17T14:13:36.218005"
+    "plazas_disponibles": 1,
+    "timestamp": "2026-05-17T15:19:10.169494"
+  },
+  "Artacea (PAMPLONA) - agosto 2026 - pf_agosto": {
+    "title": "Artacea (PAMPLONA) - agosto 2026 - pf",
+    "month": "agosto",
+    "plazas_disponibles": 1,
+    "timestamp": "2026-05-17T15:19:10.169511"
   }
 }
