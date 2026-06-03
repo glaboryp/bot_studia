@@ -1,20 +1,38 @@
 {
+  "La Masada - junio/julio 2026_julio": {
+    "title": "La Masada - junio/julio 2026",
+    "month": "julio",
+    "plazas_disponibles": 1,
+    "timestamp": "2026-06-03T22:36:12.881236"
+  },
   "Curso anual Repaso n - Los Álamos - (SEVILLA) - julio 2026 - sf_julio": {
     "title": "Curso anual Repaso n - Los Álamos - (SEVILLA) - julio 2026 - sf",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-06-03T20:25:50.892315"
+    "timestamp": "2026-06-03T22:36:12.881278"
   },
   "Curso anual Repaso n -Coniston (MANCHESTER) - julio 2026 - mof_julio": {
     "title": "Curso anual Repaso n -Coniston (MANCHESTER) - julio 2026 - mof",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-06-03T20:25:50.892326"
+    "timestamp": "2026-06-03T22:36:12.881281"
+  },
+  "Alcor (MADRID) - agosto 2026 – mof_agosto": {
+    "title": "Alcor (MADRID) - agosto 2026 – mof",
+    "month": "agosto",
+    "plazas_disponibles": 1,
+    "timestamp": "2026-06-03T22:36:12.881284"
   },
   "Curso anual estudios n - Piñeiral - (ARZÚA. A CORUÑA) - agosto 2026_agosto": {
     "title": "Curso anual estudios n - Piñeiral - (ARZÚA. A CORUÑA) - agosto 2026",
     "month": "agosto",
     "plazas_disponibles": 1,
-    "timestamp": "2026-06-03T20:25:50.892330"
+    "timestamp": "2026-06-03T22:36:12.881288"
+  },
+  "C.M. Saomar (VALENCIA) - agosto 2026 - alf_agosto": {
+    "title": "C.M. Saomar (VALENCIA) - agosto 2026 - alf",
+    "month": "agosto",
+    "plazas_disponibles": 1,
+    "timestamp": "2026-06-03T22:36:12.881291"
   }
 }
