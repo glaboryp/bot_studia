@@ -3,18 +3,30 @@
     "title": "La Masada - junio/julio 2026",
     "month": "julio",
     "plazas_disponibles": 4,
-    "timestamp": "2026-06-12T08:47:46.525825"
+    "timestamp": "2026-06-12T12:04:07.593752"
   },
   "Islabe Pb (BILBAO) - junio/julio 2026 - pf_julio": {
     "title": "Islabe Pb (BILBAO) - junio/julio 2026 - pf",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-06-12T08:47:46.525839"
+    "timestamp": "2026-06-12T12:04:07.593767"
+  },
+  "Can Soteras (BARCELONA)- julio 2026- bf_julio": {
+    "title": "Can Soteras (BARCELONA)- julio 2026- bf",
+    "month": "julio",
+    "plazas_disponibles": 1,
+    "timestamp": "2026-06-12T12:04:07.593772"
   },
   "Curso anual Repaso n -Coniston (MANCHESTER) - julio 2026 - mof_julio": {
     "title": "Curso anual Repaso n -Coniston (MANCHESTER) - julio 2026 - mof",
     "month": "julio",
     "plazas_disponibles": 3,
-    "timestamp": "2026-06-12T08:47:46.525843"
+    "timestamp": "2026-06-12T12:04:07.593775"
+  },
+  "C.M. Saomar (VALENCIA) - agosto 2026 - alf_agosto": {
+    "title": "C.M. Saomar (VALENCIA) - agosto 2026 - alf",
+    "month": "agosto",
+    "plazas_disponibles": 1,
+    "timestamp": "2026-06-12T12:04:07.593778"
   }
 }
