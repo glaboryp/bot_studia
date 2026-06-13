@@ -3,18 +3,24 @@
     "title": "La Masada - junio/julio 2026",
     "month": "julio",
     "plazas_disponibles": 5,
-    "timestamp": "2026-06-13T16:42:12.838490"
+    "timestamp": "2026-06-13T17:58:41.550181"
   },
   "Islabe Pb (BILBAO) - junio/julio 2026 - pf_julio": {
     "title": "Islabe Pb (BILBAO) - junio/julio 2026 - pf",
     "month": "julio",
     "plazas_disponibles": 2,
-    "timestamp": "2026-06-13T16:42:12.838498"
+    "timestamp": "2026-06-13T17:58:41.550190"
   },
   "Curso anual Repaso n -Coniston (MANCHESTER) - julio 2026 - mof_julio": {
     "title": "Curso anual Repaso n -Coniston (MANCHESTER) - julio 2026 - mof",
     "month": "julio",
     "plazas_disponibles": 3,
-    "timestamp": "2026-06-13T16:42:12.838501"
+    "timestamp": "2026-06-13T17:58:41.550193"
+  },
+  "Curso anual repaso n - Rúa Nueva (SANTIAGO DE COMPOSTELA) - julio 2026 - dlnf_julio": {
+    "title": "Curso anual repaso n - Rúa Nueva (SANTIAGO DE COMPOSTELA) - julio 2026 - dlnf",
+    "month": "julio",
+    "plazas_disponibles": 1,
+    "timestamp": "2026-06-13T17:58:41.550196"
   }
 }
