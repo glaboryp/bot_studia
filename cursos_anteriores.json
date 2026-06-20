@@ -3,66 +3,72 @@
     "title": "La Masada - junio/julio 2026",
     "month": "julio",
     "plazas_disponibles": 4,
-    "timestamp": "2026-06-20T04:37:23.942293"
+    "timestamp": "2026-06-20T08:04:15.802924"
   },
   "Islabe Pb (BILBAO) - junio/julio 2026 - pf_julio": {
     "title": "Islabe Pb (BILBAO) - junio/julio 2026 - pf",
     "month": "julio",
-    "plazas_disponibles": 2,
-    "timestamp": "2026-06-20T04:37:23.942303"
+    "plazas_disponibles": 1,
+    "timestamp": "2026-06-20T08:04:15.802934"
   },
   "Curso anual repaso n - El Rincón (VALLADOLID) - julio 2026 - dlnf_julio": {
     "title": "Curso anual repaso n - El Rincón (VALLADOLID) - julio 2026 - dlnf",
     "month": "julio",
     "plazas_disponibles": 2,
-    "timestamp": "2026-06-20T04:37:23.942307"
+    "timestamp": "2026-06-20T08:04:15.802937"
   },
   "La Barquera (CANTABRIA) - junio/julio 2026 - pf_julio": {
     "title": "La Barquera (CANTABRIA) - junio/julio 2026 - pf",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-06-20T04:37:23.942309"
+    "timestamp": "2026-06-20T08:04:15.802939"
   },
   "Curso anual Repaso n - Valdelafuente B (SEGOVIA) - julio 2026- mEf_julio": {
     "title": "Curso anual Repaso n - Valdelafuente B (SEGOVIA) - julio 2026- mEf",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-06-20T04:37:23.942312"
+    "timestamp": "2026-06-20T08:04:15.802941"
   },
   "curso anual Repaso n - El Bosque (CALAMOCHA)-julio 2026- alf_julio": {
     "title": "curso anual Repaso n - El Bosque (CALAMOCHA)-julio 2026- alf",
     "month": "julio",
     "plazas_disponibles": 2,
-    "timestamp": "2026-06-20T04:37:23.942315"
+    "timestamp": "2026-06-20T08:04:15.802943"
   },
   "Can Soteras (BARCELONA)- julio 2026- bf_julio": {
     "title": "Can Soteras (BARCELONA)- julio 2026- bf",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-06-20T04:37:23.942318"
+    "timestamp": "2026-06-20T08:04:15.802944"
   },
   "Curso anual Repaso n - Los Álamos - (SEVILLA) - julio 2026 - sf_julio": {
     "title": "Curso anual Repaso n - Los Álamos - (SEVILLA) - julio 2026 - sf",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-06-20T04:37:23.942322"
+    "timestamp": "2026-06-20T08:04:15.802949"
   },
   "El Pinarillo (EL ESCORIAL) - julio 2026 – mof_julio": {
     "title": "El Pinarillo (EL ESCORIAL) - julio 2026 – mof",
     "month": "julio",
     "plazas_disponibles": 3,
-    "timestamp": "2026-06-20T04:37:23.942324"
+    "timestamp": "2026-06-20T08:04:15.802951"
   },
   "Curso anual Repaso n -Coniston (MANCHESTER) - julio 2026 - mof_julio": {
     "title": "Curso anual Repaso n -Coniston (MANCHESTER) - julio 2026 - mof",
     "month": "julio",
     "plazas_disponibles": 4,
-    "timestamp": "2026-06-20T04:37:23.942325"
+    "timestamp": "2026-06-20T08:04:15.802953"
   },
   "Valparaíso (SEVILLA) - julio/agosto 2026 - sf_julio": {
     "title": "Valparaíso (SEVILLA) - julio/agosto 2026 - sf",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-06-20T04:37:23.942327"
+    "timestamp": "2026-06-20T08:04:15.802955"
+  },
+  "Alcor (MADRID) - agosto 2026 – mof_agosto": {
+    "title": "Alcor (MADRID) - agosto 2026 – mof",
+    "month": "agosto",
+    "plazas_disponibles": 1,
+    "timestamp": "2026-06-20T08:04:15.802958"
   }
 }
