@@ -1,68 +1,62 @@
 {
-  "Can Soteras (BARCELONA)- julio 2026- bf_julio": {
-    "title": "Can Soteras (BARCELONA)- julio 2026- bf",
-    "month": "julio",
-    "plazas_disponibles": 1,
-    "timestamp": "2026-07-06T20:31:09.856114"
-  },
   "Islabe C (BILBAO) - julio 2026 - pf_julio": {
     "title": "Islabe C (BILBAO) - julio 2026 - pf",
     "month": "julio",
     "plazas_disponibles": 2,
-    "timestamp": "2026-07-06T20:31:09.856123"
+    "timestamp": "2026-07-06T22:00:50.184225"
   },
   "El Pinarillo (EL ESCORIAL) - julio 2026 – mof_julio": {
     "title": "El Pinarillo (EL ESCORIAL) - julio 2026 – mof",
     "month": "julio",
     "plazas_disponibles": 3,
-    "timestamp": "2026-07-06T20:31:09.856127"
+    "timestamp": "2026-07-06T22:00:50.184237"
   },
   "Haus Hardtberg (ALEMANIA)-julio 2026-alf_julio": {
     "title": "Haus Hardtberg (ALEMANIA)-julio 2026-alf",
     "month": "julio",
     "plazas_disponibles": 3,
-    "timestamp": "2026-07-06T20:31:09.856130"
+    "timestamp": "2026-07-06T22:00:50.184240"
   },
   "Curso anual Repaso n -Coniston (MANCHESTER) - julio 2026 - mof_julio": {
     "title": "Curso anual Repaso n -Coniston (MANCHESTER) - julio 2026 - mof",
     "month": "julio",
     "plazas_disponibles": 3,
-    "timestamp": "2026-07-06T20:31:09.856133"
+    "timestamp": "2026-07-06T22:00:50.184241"
   },
   "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof_julio": {
     "title": "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof",
     "month": "julio",
     "plazas_disponibles": 8,
-    "timestamp": "2026-07-06T20:31:09.856135"
+    "timestamp": "2026-07-06T22:00:50.184242"
   },
   "Alcor (MADRID) - agosto 2026 – mof_agosto": {
     "title": "Alcor (MADRID) - agosto 2026 – mof",
     "month": "agosto",
     "plazas_disponibles": 5,
-    "timestamp": "2026-07-06T20:31:09.856136"
+    "timestamp": "2026-07-06T22:00:50.184244"
   },
   "Curso anual estudios n - Piñeiral - (ARZÚA. A CORUÑA) - agosto 2026_agosto": {
     "title": "Curso anual estudios n - Piñeiral - (ARZÚA. A CORUÑA) - agosto 2026",
     "month": "agosto",
     "plazas_disponibles": 4,
-    "timestamp": "2026-07-06T20:31:09.856139"
+    "timestamp": "2026-07-06T22:00:50.184245"
   },
   "Los Enebros (NAVALAGAMELLA-MADRID) - agosto 2026 - mof_agosto": {
     "title": "Los Enebros (NAVALAGAMELLA-MADRID) - agosto 2026 - mof",
     "month": "agosto",
     "plazas_disponibles": 3,
-    "timestamp": "2026-07-06T20:31:09.856141"
+    "timestamp": "2026-07-06T22:00:50.184248"
   },
   "Los Álamos - (SEVILLA) - agosto 2026 - sf_agosto": {
     "title": "Los Álamos - (SEVILLA) - agosto 2026 - sf",
     "month": "agosto",
     "plazas_disponibles": 1,
-    "timestamp": "2026-07-06T20:31:09.856142"
+    "timestamp": "2026-07-06T22:00:50.184250"
   },
   "Can Viladoms (BARCELONA )- agosto 2026- bf_agosto": {
     "title": "Can Viladoms (BARCELONA )- agosto 2026- bf",
     "month": "agosto",
     "plazas_disponibles": 1,
-    "timestamp": "2026-07-06T20:31:09.856144"
+    "timestamp": "2026-07-06T22:00:50.184252"
   }
 }
