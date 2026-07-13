@@ -3,36 +3,42 @@
     "title": "Curso anual Repaso n -Coniston (MANCHESTER) - julio 2026 - mof",
     "month": "julio",
     "plazas_disponibles": 3,
-    "timestamp": "2026-07-13T20:22:37.419757"
+    "timestamp": "2026-07-13T21:27:26.191636"
   },
   "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof_julio": {
     "title": "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof",
     "month": "julio",
     "plazas_disponibles": 8,
-    "timestamp": "2026-07-13T20:22:37.419767"
+    "timestamp": "2026-07-13T21:27:26.191646"
   },
   "Villa Loarre (PAMPLONA) - julio/agosto 2026 - pf_julio": {
     "title": "Villa Loarre (PAMPLONA) - julio/agosto 2026 - pf",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-07-13T20:22:37.419769"
+    "timestamp": "2026-07-13T21:27:26.191648"
+  },
+  "Valparaíso (SEVILLA) - julio/agosto 2026 - sf_julio": {
+    "title": "Valparaíso (SEVILLA) - julio/agosto 2026 - sf",
+    "month": "julio",
+    "plazas_disponibles": 1,
+    "timestamp": "2026-07-13T21:27:26.191650"
   },
   "Alcor (MADRID) - agosto 2026 – mof_agosto": {
     "title": "Alcor (MADRID) - agosto 2026 – mof",
     "month": "agosto",
     "plazas_disponibles": 6,
-    "timestamp": "2026-07-13T20:22:37.419772"
+    "timestamp": "2026-07-13T21:27:26.191652"
   },
   "Curso anual estudios n - Piñeiral - (ARZÚA. A CORUÑA) - agosto 2026_agosto": {
     "title": "Curso anual estudios n - Piñeiral - (ARZÚA. A CORUÑA) - agosto 2026",
     "month": "agosto",
     "plazas_disponibles": 5,
-    "timestamp": "2026-07-13T20:22:37.419774"
+    "timestamp": "2026-07-13T21:27:26.191654"
   },
-  "El Rubín (BAEZA, JAÉN) - agosto 2026 - dlgrf_agosto": {
-    "title": "El Rubín (BAEZA, JAÉN) - agosto 2026 - dlgrf",
+  "Los Álamos - (SEVILLA) - agosto 2026 - sf_agosto": {
+    "title": "Los Álamos - (SEVILLA) - agosto 2026 - sf",
     "month": "agosto",
     "plazas_disponibles": 1,
-    "timestamp": "2026-07-13T20:22:37.419777"
+    "timestamp": "2026-07-13T21:27:26.191656"
   }
 }
