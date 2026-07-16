@@ -1,50 +1,50 @@
 {
-  "Curso anual Repaso n -Coniston (MANCHESTER) - julio 2026 - mof_julio": {
-    "title": "Curso anual Repaso n -Coniston (MANCHESTER) - julio 2026 - mof",
-    "month": "julio",
-    "plazas_disponibles": 3,
-    "timestamp": "2026-07-16T21:41:14.393501"
-  },
   "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof_julio": {
     "title": "Valdearroyo (SAN AGUSTÍN DE GUADALIX) - julio 2026 - mof",
     "month": "julio",
     "plazas_disponibles": 8,
-    "timestamp": "2026-07-16T21:41:14.393510"
+    "timestamp": "2026-07-16T22:40:46.284909"
   },
   "Villa Loarre (PAMPLONA) - julio/agosto 2026 - pf_julio": {
     "title": "Villa Loarre (PAMPLONA) - julio/agosto 2026 - pf",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-07-16T21:41:14.393512"
+    "timestamp": "2026-07-16T22:40:46.284921"
   },
   "Valparaíso (SEVILLA) - julio/agosto 2026 - sf_julio": {
     "title": "Valparaíso (SEVILLA) - julio/agosto 2026 - sf",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-07-16T21:41:14.393515"
+    "timestamp": "2026-07-16T22:40:46.284923"
   },
   "Hotel Villa de Sallent (FORMIGAL) - agosto 2026 - pf_agosto": {
     "title": "Hotel Villa de Sallent (FORMIGAL) - agosto 2026 - pf",
     "month": "agosto",
     "plazas_disponibles": 1,
-    "timestamp": "2026-07-16T21:41:14.393517"
+    "timestamp": "2026-07-16T22:40:46.284926"
   },
   "Alcor (MADRID) - agosto 2026 – mof_agosto": {
     "title": "Alcor (MADRID) - agosto 2026 – mof",
     "month": "agosto",
     "plazas_disponibles": 6,
-    "timestamp": "2026-07-16T21:41:14.393519"
+    "timestamp": "2026-07-16T22:40:46.284928"
+  },
+  "Artacea (PAMPLONA) - agosto 2026 - pf_agosto": {
+    "title": "Artacea (PAMPLONA) - agosto 2026 - pf",
+    "month": "agosto",
+    "plazas_disponibles": 1,
+    "timestamp": "2026-07-16T22:40:46.284931"
   },
   "Curso anual estudios n - Piñeiral - (ARZÚA. A CORUÑA) - agosto 2026_agosto": {
     "title": "Curso anual estudios n - Piñeiral - (ARZÚA. A CORUÑA) - agosto 2026",
     "month": "agosto",
     "plazas_disponibles": 4,
-    "timestamp": "2026-07-16T21:41:14.393522"
+    "timestamp": "2026-07-16T22:40:46.284933"
   },
   "Los Enebros (NAVALAGAMELLA-MADRID) - agosto 2026 - mof_agosto": {
     "title": "Los Enebros (NAVALAGAMELLA-MADRID) - agosto 2026 - mof",
     "month": "agosto",
     "plazas_disponibles": 1,
-    "timestamp": "2026-07-16T21:41:14.393526"
+    "timestamp": "2026-07-16T22:40:46.284939"
   }
 }
