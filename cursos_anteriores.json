@@ -3,30 +3,36 @@
     "title": "Valparaíso (SEVILLA) - julio/agosto 2026 - sf",
     "month": "julio",
     "plazas_disponibles": 1,
-    "timestamp": "2026-07-20T07:46:45.159353"
+    "timestamp": "2026-07-20T10:32:42.965855"
   },
   "Hotel Villa de Sallent (FORMIGAL) - agosto 2026 - pf_agosto": {
     "title": "Hotel Villa de Sallent (FORMIGAL) - agosto 2026 - pf",
     "month": "agosto",
     "plazas_disponibles": 1,
-    "timestamp": "2026-07-20T07:46:45.159363"
+    "timestamp": "2026-07-20T10:32:42.965867"
   },
   "Alcor (MADRID) - agosto 2026 – mof_agosto": {
     "title": "Alcor (MADRID) - agosto 2026 – mof",
     "month": "agosto",
     "plazas_disponibles": 6,
-    "timestamp": "2026-07-20T07:46:45.159366"
+    "timestamp": "2026-07-20T10:32:42.965872"
   },
   "Curso anual estudios n - Piñeiral - (ARZÚA. A CORUÑA) - agosto 2026_agosto": {
     "title": "Curso anual estudios n - Piñeiral - (ARZÚA. A CORUÑA) - agosto 2026",
     "month": "agosto",
     "plazas_disponibles": 3,
-    "timestamp": "2026-07-20T07:46:45.159368"
+    "timestamp": "2026-07-20T10:32:42.965876"
+  },
+  "Los Enebros (NAVALAGAMELLA-MADRID) - agosto 2026 - mof_agosto": {
+    "title": "Los Enebros (NAVALAGAMELLA-MADRID) - agosto 2026 - mof",
+    "month": "agosto",
+    "plazas_disponibles": 1,
+    "timestamp": "2026-07-20T10:32:42.965880"
   },
   "Can Nadal (GIRONA)- agosto 2026- bf_agosto": {
     "title": "Can Nadal (GIRONA)- agosto 2026- bf",
     "month": "agosto",
     "plazas_disponibles": 2,
-    "timestamp": "2026-07-20T07:46:45.159371"
+    "timestamp": "2026-07-20T10:32:42.965885"
   }
 }
