@@ -63,7 +63,6 @@ Thumbs.db
 # Archivos temporales de desarrollo
 temp/
 tmp/
-test_*.py
 debug_*.py
 
 # Archivos de documentación temporal (solo durante desarrollo)
