@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 from bs4 import BeautifulSoup
 import smtplib
 from email.mime.text import MIMEText
@@ -31,15 +33,9 @@ logging.basicConfig(
 )
 
 class StudiaBotDefinitivo:
-    def _is_domain_parked(self, response):
-        """Detecta si la respuesta viene de una página de parking de dominio en vez del sitio real"""
-        return 'studiaonline.com' in response.url or 'hugedomains.com' in response.url
-
     def __init__(self):
-        # URLs y credenciales - FORZAR URL CORRECTA
-        self.base_url = 'https://studiaonline.org/'  # Hardcoded para evitar problemas
-        print(f"🎯 URL hardcoded (forzada): {self.base_url}")
-        
+        self.base_url = os.getenv('STUDIA_BASE_URL', 'https://studiaonline.org/')
+
         self.username = os.getenv('STUDIA_USERNAME')
         self.password = os.getenv('STUDIA_PASSWORD')
         
@@ -57,11 +53,21 @@ class StudiaBotDefinitivo:
         
         # Configuración específica
         self.target_months = ['julio', 'agosto']
-        self.target_year = '2026'
+        self.target_year = str(datetime.now().year)
         self.target_years = [str(int(self.target_year) - 1), self.target_year]
         
         # Session para cookies
         self.session = requests.Session()
+        # Reintentar automáticamente ante fallos de red o errores 5xx puntuales
+        retry_strategy = Retry(
+            total=3,
+            backoff_factor=1,
+            status_forcelist=[500, 502, 503, 504],
+            allowed_methods=['GET', 'POST'],
+        )
+        retry_adapter = HTTPAdapter(max_retries=retry_strategy)
+        self.session.mount('https://', retry_adapter)
+        self.session.mount('http://', retry_adapter)
         # Configurar headers robustos para evitar bloqueos
         self.session.headers.update({
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
@@ -80,30 +86,10 @@ class StudiaBotDefinitivo:
         try:
             logging.info("🔐 Iniciando proceso de login...")
             logging.info(f"🌐 URL base configurada: {self.base_url}")
-            
-            # Verificación de DNS antes de intentar conexión
-            import socket
-            try:
-                domain = 'studiaonline.org'
-                ip_address = socket.gethostbyname(domain)
-                logging.info(f"🔍 DNS lookup para {domain}: {ip_address}")
-            except socket.gaierror as e:
-                logging.error(f"❌ Error de DNS para {domain}: {e}")
-                return False
-            
+
             # Obtener página de login
             logging.info(f"📡 Conectando a: {self.base_url}")
             response = self.session.get(self.base_url, timeout=30)
-            
-            # Verificar que no hubo redirección a dominio incorrecto
-            final_url = response.url
-            logging.info(f"🔗 URL final después de redirecciones: {final_url}")
-            
-            if self._is_domain_parked(response):
-                logging.error(f"❌ Redirigido a dominio incorrecto: {final_url}")
-                logging.error("💡 Esto puede indicar que studiaonline.org no está disponible")
-                return False
-            
             response.raise_for_status()
             
             soup = BeautifulSoup(response.text, 'html.parser')
@@ -157,10 +143,6 @@ class StudiaBotDefinitivo:
             # Realizar login
             login_response = self.session.post(login_url, data=form_data, allow_redirects=True, timeout=30)
             login_response.raise_for_status()
-            
-            if self._is_domain_parked(login_response):
-                logging.error(f"❌ Login redirigido a dominio incorrecto: {login_response.url}")
-                return False
 
             # Verificar éxito del login: si la respuesta todavía contiene un campo de
             # contraseña, seguimos en la página de login (credenciales rechazadas)
@@ -172,8 +154,8 @@ class StudiaBotDefinitivo:
             logging.info("✅ Login realizado exitosamente")
             return True
             
-        except Exception as e:
-            logging.error(f"❌ Error durante login: {e}")
+        except Exception:
+            logging.exception("❌ Error durante login")
             return False
     
     def get_available_courses(self):
@@ -188,10 +170,6 @@ class StudiaBotDefinitivo:
             logging.info(f"🔍 Accediendo a página de cursos: {courses_url}")
             
             response = self.session.get(courses_url, timeout=30)
-
-            if self._is_domain_parked(response):
-                logging.error(f"❌ Página de cursos redirigida a dominio incorrecto: {response.url}")
-                return []
 
             if response.status_code != 200:
                 logging.error(f"❌ Error accediendo a cursos: {response.status_code}")
@@ -235,10 +213,6 @@ class StudiaBotDefinitivo:
                 # Realizar petición AJAX
                 ajax_response = self.session.post(ajax_url, data=ajax_data, timeout=30)
 
-                if self._is_domain_parked(ajax_response):
-                    logging.error(f"❌ AJAX redirigido a dominio incorrecto: {ajax_response.url}")
-                    break
-
                 if ajax_response.status_code != 200:
                     logging.error(f"❌ Error en AJAX página {page}: {ajax_response.status_code}")
                     break
@@ -275,8 +249,8 @@ class StudiaBotDefinitivo:
                         logging.warning("⚠️ Límite de 10 páginas alcanzado")
                         break
                         
-                except Exception as e:
-                    logging.error(f"❌ Error procesando AJAX página {page}: {e}")
+                except Exception:
+                    logging.exception(f"❌ Error procesando AJAX página {page}")
                     break
             
             # Eliminar duplicados finales
@@ -294,8 +268,8 @@ class StudiaBotDefinitivo:
             
             return unique_courses
             
-        except Exception as e:
-            logging.error(f"❌ Error obteniendo cursos: {e}")
+        except Exception:
+            logging.exception("❌ Error obteniendo cursos")
             return []
     
     def extract_courses_from_json(self, cursos_data):
@@ -372,14 +346,14 @@ class StudiaBotDefinitivo:
                             logging.info(f"🚫 EXCLUIDO: {nombre} (lugar vacío)")
                         # No logear si es por mes/año incorrectos para evitar spam
                         
-                except Exception as e:
-                    logging.debug(f"Error procesando curso individual: {e}")
+                except Exception:
+                    logging.warning(f"⚠️ Curso omitido por error al procesarlo: {curso.get('nombre', '?')}", exc_info=True)
                     continue
-            
+
             return courses
-            
-        except Exception as e:
-            logging.error(f"❌ Error extrayendo cursos de JSON: {e}")
+
+        except Exception:
+            logging.exception("❌ Error extrayendo cursos de JSON")
             return []
     
     def save_courses_state(self, courses):
@@ -401,8 +375,8 @@ class StudiaBotDefinitivo:
             
             logging.info(f"💾 Estado guardado: {len(course_ids)} cursos")
             
-        except Exception as e:
-            logging.error(f"❌ Error guardando estado: {e}")
+        except Exception:
+            logging.exception("❌ Error guardando estado")
     
     def commit_state_changes(self):
         """Hacer commit automático del archivo de estado actualizado"""
@@ -442,8 +416,8 @@ class StudiaBotDefinitivo:
             else:
                 logging.info("ℹ️ Sin cambios en archivo de estado")
                 
-        except Exception as e:
-            logging.error(f"❌ Error en commit automático: {e}")
+        except Exception:
+            logging.exception("❌ Error en commit automático")
             # No es crítico, el bot puede seguir funcionando
     
     def load_previous_state(self):
@@ -459,8 +433,8 @@ class StudiaBotDefinitivo:
             logging.info(f"📂 Estado anterior cargado: {len(previous_state)} cursos")
             return previous_state
             
-        except Exception as e:
-            logging.error(f"❌ Error cargando estado anterior: {e}")
+        except Exception:
+            logging.exception("❌ Error cargando estado anterior")
             return {}
     
     def find_new_courses(self, current_courses, previous_state):
@@ -499,11 +473,11 @@ class StudiaBotDefinitivo:
             msg = MIMEMultipart()
             msg['From'] = self.email_from
             msg['To'] = ', '.join(self.email_to)  # Unir múltiples destinatarios con comas
-            msg['Subject'] = f"StudiaOnline - Cursos Disponibles Julio/Agosto 2026 ({datetime.now().strftime('%d/%m/%Y')})"
-            
+            msg['Subject'] = f"StudiaOnline - Cursos Disponibles Julio/Agosto {self.target_year} ({datetime.now().strftime('%d/%m/%Y')})"
+
             if courses:
                 body = "🎓 CURSOS CON PLAZAS DISPONIBLES\n"
-                body += "📅 JULIO Y AGOSTO 2026\n"
+                body += f"📅 JULIO Y AGOSTO {self.target_year}\n"
                 body += "=" * 50 + "\n\n"
                 
                 # Separar por mes
@@ -530,13 +504,13 @@ class StudiaBotDefinitivo:
                 body += f"Total: {len(courses)} cursos con plazas libres\n"
                 body += f"({len(julio_courses)} en julio, {len(agosto_courses)} en agosto)\n\n"
                 body += f"Búsqueda: {datetime.now().strftime('%d/%m/%Y %H:%M')}\n"
-                body += "🔗 https://studiaonline.org/"
-                
+                body += f"🔗 {self.base_url}"
+
             else:
                 body = "📋 REVISIÓN STUDIAONLINE\n"
                 body += "=" * 30 + "\n\n"
                 body += "❌ No hay cursos con plazas disponibles\n"
-                body += "   para julio y agosto 2026\n\n"
+                body += f"   para julio y agosto {self.target_year}\n\n"
                 body += f"Búsqueda: {datetime.now().strftime('%d/%m/%Y %H:%M')}\n"
                 body += "📧 Te notificaré cuando haya plazas"
             
@@ -553,8 +527,8 @@ class StudiaBotDefinitivo:
             logging.info(f"📧 Email enviado a {len(self.email_to)} destinatarios: {len(courses)} cursos con plazas")
             return True
             
-        except Exception as e:
-            logging.error(f"❌ Error enviando email: {e}")
+        except Exception:
+            logging.exception("❌ Error enviando email")
             return False
     
     def send_changes_email(self, new_courses):
@@ -603,8 +577,8 @@ class StudiaBotDefinitivo:
             logging.info(f"🚨 Email de ALERTA enviado a {len(self.email_to)} destinatarios: {len(new_courses)} cambios detectados")
             return True
             
-        except Exception as e:
-            logging.error(f"❌ Error enviando email de alerta: {e}")
+        except Exception:
+            logging.exception("❌ Error enviando email de alerta")
             return False
     
     def run_search(self):
@@ -655,8 +629,8 @@ class StudiaBotDefinitivo:
             logging.info("✅ Verificación completada")
             return True
                 
-        except Exception as e:
-            logging.error(f"❌ Error en la verificación: {e}")
+        except Exception:
+            logging.exception("❌ Error en la verificación")
             return False
     
     def run_monitoring(self):
@@ -687,7 +661,7 @@ class StudiaBotDefinitivo:
             logging.info("⏹️ Monitoreo detenido por el usuario")
             print("\n⏹️ Monitoreo detenido. ¡Hasta luego!")
         except Exception as e:
-            logging.error(f"❌ Error en monitoreo: {e}")
+            logging.exception("❌ Error en monitoreo")
             print(f"\n❌ Error en monitoreo: {e}")
             
         finally:
