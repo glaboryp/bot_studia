@@ -31,6 +31,10 @@ logging.basicConfig(
 )
 
 class StudiaBotDefinitivo:
+    def _is_domain_parked(self, response):
+        """Detecta si la respuesta viene de una página de parking de dominio en vez del sitio real"""
+        return 'studiaonline.com' in response.url or 'hugedomains.com' in response.url
+
     def __init__(self):
         # URLs y credenciales - FORZAR URL CORRECTA
         self.base_url = 'https://studiaonline.org/'  # Hardcoded para evitar problemas
@@ -54,6 +58,7 @@ class StudiaBotDefinitivo:
         # Configuración específica
         self.target_months = ['julio', 'agosto']
         self.target_year = '2026'
+        self.target_years = [str(int(self.target_year) - 1), self.target_year]
         
         # Session para cookies
         self.session = requests.Session()
@@ -94,7 +99,7 @@ class StudiaBotDefinitivo:
             final_url = response.url
             logging.info(f"🔗 URL final después de redirecciones: {final_url}")
             
-            if 'studiaonline.com' in final_url or 'hugedomains.com' in final_url:
+            if self._is_domain_parked(response):
                 logging.error(f"❌ Redirigido a dominio incorrecto: {final_url}")
                 logging.error("💡 Esto puede indicar que studiaonline.org no está disponible")
                 return False
@@ -153,102 +158,23 @@ class StudiaBotDefinitivo:
             login_response = self.session.post(login_url, data=form_data, allow_redirects=True, timeout=30)
             login_response.raise_for_status()
             
-            # Verificar éxito del login
-            if ('error' in login_response.text.lower() or 
-                'incorrecto' in login_response.text.lower() or
-                'invalid' in login_response.text.lower()):
-                logging.error("❌ Login fallido - credenciales incorrectas")
+            if self._is_domain_parked(login_response):
+                logging.error(f"❌ Login redirigido a dominio incorrecto: {login_response.url}")
                 return False
-            
+
+            # Verificar éxito del login: si la respuesta todavía contiene un campo de
+            # contraseña, seguimos en la página de login (credenciales rechazadas)
+            login_soup = BeautifulSoup(login_response.text, 'html.parser')
+            if login_soup.find('input', {'type': 'password'}):
+                logging.error("❌ Login fallido - seguimos en la página de login (credenciales incorrectas)")
+                return False
+
             logging.info("✅ Login realizado exitosamente")
             return True
             
         except Exception as e:
             logging.error(f"❌ Error durante login: {e}")
             return False
-    
-    def extract_courses_with_regex(self, html_content):
-        """Extraer cursos usando regex para evitar problemas con JSON malformado (LEGACY - solo para fallback)"""
-        courses = []
-        
-        try:
-            # Buscar el array de cursos en el JavaScript
-            cursos_pattern = r'cursos:\s*(\[.*?\]),\s*carrito:'
-            match = re.search(cursos_pattern, html_content, re.DOTALL)
-            
-            if not match:
-                logging.error("❌ No se encontró el array de cursos en el HTML")
-                return []
-            
-            cursos_json_str = match.group(1)
-            logging.info(f"🔍 LEGACY: Encontrado array de cursos con {len(cursos_json_str)} caracteres")
-            
-            # Intentar parsear el JSON directamente
-            try:
-                import json
-                cursos_data = json.loads(cursos_json_str)
-                logging.info(f"✅ LEGACY: JSON parseado correctamente: {len(cursos_data)} cursos")
-                
-                return self.extract_courses_from_json(cursos_data)
-                        
-            except json.JSONDecodeError as e:
-                logging.warning(f"⚠️ LEGACY: JSON malformado, usando regex como backup: {e}")
-                logging.warning(f"⚠️ NOTA: El filtro de 'lugar vacío' solo se aplica con JSON válido")
-                # Fallback a regex si el JSON está malformado
-                course_pattern = r'"nombre":\s*"([^"]*(?:julio|agosto)[^"]*2026[^"]*)"[^}]*"grupo_seleccionado":\s*\{[^}]*"capacidad":\s*(\d+)[^}]*"ocupacion":\s*(\d+)'
-                matches = re.finditer(course_pattern, html_content, re.IGNORECASE)
-                
-                for match in matches:
-                    try:
-                        nombre = match.group(1)
-                        capacidad = int(match.group(2))
-                        ocupacion = int(match.group(3))
-                        
-                        plazas_disponibles = capacidad - ocupacion
-                        
-                        # Verificar que NO es un semestre
-                        is_not_semestre = 'semestre' not in nombre.lower()
-                        
-                        if plazas_disponibles > 0 and is_not_semestre:
-                            nombre_limpio = nombre.replace('Curso anual estudios n - ', '')
-                            nombre_limpio = nombre_limpio.replace('Curso anual Repaso n - ', '')
-                            nombre_limpio = nombre_limpio.split(' - mEf')[0]
-                            nombre_limpio = nombre_limpio.split(' -dlmEf')[0]
-                            nombre_limpio = re.sub(r'\s+', ' ', nombre_limpio).strip()
-                            month = 'julio' if 'julio' in nombre.lower() else 'agosto'
-                            
-                            course_info = {
-                                'title': nombre_limpio,
-                                'month': month,
-                                'capacidad': capacidad,
-                                'ocupacion': ocupacion,
-                                'plazas_disponibles': plazas_disponibles,
-                                'available': True
-                            }
-                            
-                            courses.append(course_info)
-                            logging.info(f"✅ REGEX BACKUP: {nombre_limpio} ({plazas_disponibles} plazas)")
-                        
-                    except (ValueError, IndexError) as e:
-                        logging.debug(f"Error en regex backup: {e}")
-                        continue
-            
-            # Eliminar duplicados basándose en el título
-            unique_courses = []
-            seen_titles = set()
-            
-            for course in courses:
-                title_key = re.sub(r'[^a-zA-Z0-9]', '', course['title'].lower())
-                if title_key not in seen_titles:
-                    seen_titles.add(title_key)
-                    unique_courses.append(course)
-            
-            logging.info(f"📊 LEGACY: Cursos únicos encontrados: {len(unique_courses)}")
-            return unique_courses
-            
-        except Exception as e:
-            logging.error(f"❌ Error extrayendo cursos LEGACY: {e}")
-            return []
     
     def get_available_courses(self):
         """Obtener cursos con plazas disponibles de todas las páginas"""
@@ -262,14 +188,21 @@ class StudiaBotDefinitivo:
             logging.info(f"🔍 Accediendo a página de cursos: {courses_url}")
             
             response = self.session.get(courses_url, timeout=30)
-            
+
+            if self._is_domain_parked(response):
+                logging.error(f"❌ Página de cursos redirigida a dominio incorrecto: {response.url}")
+                return []
+
             if response.status_code != 200:
                 logging.error(f"❌ Error accediendo a cursos: {response.status_code}")
                 return []
 
             # Obtener el id_alumno de la página inicial
             id_alumno_match = re.search(r'id_alumno:\s*(\d+)', response.text)
-            id_alumno = int(id_alumno_match.group(1)) if id_alumno_match else 6861
+            if not id_alumno_match:
+                logging.error("❌ No se pudo extraer id_alumno de la página de cursos")
+                return []
+            id_alumno = int(id_alumno_match.group(1))
             
             all_courses = []
             page = 0
@@ -291,17 +224,21 @@ class StudiaBotDefinitivo:
                     'id_ensenanza': 0,
                     'id_producto': 0,
                     'search': '',
-                    'centro_alumno': False,  # ❌ Desmarcar "Solo de mi centro"
+                    # centro_alumno / region_alumno se omiten para replicar el comportamiento
+                    # de un checkbox desmarcado en un <form> (no se envía el campo)
                     'fecha_filtro': '',
                     'id_alumno': id_alumno,
                     'order_by': 'fecha',
                     'puedo_cursar': '',
-                    'region_alumno': False  # ❌ Desmarcar "Solo de mi región"
                 }
                 
                 # Realizar petición AJAX
                 ajax_response = self.session.post(ajax_url, data=ajax_data, timeout=30)
-                
+
+                if self._is_domain_parked(ajax_response):
+                    logging.error(f"❌ AJAX redirigido a dominio incorrecto: {ajax_response.url}")
+                    break
+
                 if ajax_response.status_code != 200:
                     logging.error(f"❌ Error en AJAX página {page}: {ajax_response.status_code}")
                     break
@@ -382,17 +319,19 @@ class StudiaBotDefinitivo:
                     has_valid_lugar = False
                     if grupos:
                         for grupo in grupos:
-                            lugar = grupo.get('lugar', '').strip()
+                            lugar = (grupo.get('lugar') or '').strip()
                             if lugar:  # Si hay al menos un lugar no vacío
                                 has_valid_lugar = True
                                 break
                     
                     # Excepción especial: permitir "Residencia Tafira Atlantic Club" aunque el lugar esté vacío
                     is_tafira_exception = 'residencia tafira atlantic club' in nombre.lower()
+                    if is_tafira_exception and not has_valid_lugar:
+                        logging.info(f"ℹ️ Excepción Tafira aplicada (lugar vacío) para: {nombre}")
                     
                     # Verificar que es de julio o agosto 2026, NO es un semestre y tiene lugar válido
                     is_target_month = any(month in nombre.lower() for month in self.target_months)
-                    is_target_year = '2026' in nombre or '2025' in nombre
+                    is_target_year = any(year in nombre for year in self.target_years)
                     is_not_semestre = 'semestre' not in nombre.lower()
                     
                     if is_target_month and is_target_year and is_not_semestre and (has_valid_lugar or is_tafira_exception):
