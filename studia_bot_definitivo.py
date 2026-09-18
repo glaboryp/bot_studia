@@ -17,7 +17,6 @@ from dotenv import load_dotenv
 import re
 from urllib.parse import urljoin
 import json
-import hashlib
 
 # Cargar variables de entorno
 load_dotenv()
@@ -397,18 +396,24 @@ class StudiaBotDefinitivo:
                              capture_output=True, cwd='.')
                 
                 # Agregar el archivo
-                subprocess.run(['git', 'add', self.state_file], 
-                             capture_output=True, cwd='.')
-                
+                add_result = subprocess.run(['git', 'add', self.state_file],
+                             capture_output=True, text=True, cwd='.')
+                if add_result.returncode != 0:
+                    logging.warning(f"⚠️ Error haciendo git add: {add_result.stderr}")
+                    return
+
                 # Hacer commit
                 commit_msg = f"🤖 Actualizar el estado anterior - {datetime.now().strftime('%Y-%m-%d %H:%M')}"
-                subprocess.run(['git', 'commit', '-m', commit_msg], 
-                             capture_output=True, cwd='.')
-                
+                commit_result = subprocess.run(['git', 'commit', '-m', commit_msg],
+                             capture_output=True, text=True, cwd='.')
+                if commit_result.returncode != 0:
+                    logging.warning(f"⚠️ Error haciendo git commit: {commit_result.stderr}")
+                    return
+
                 # Push
-                push_result = subprocess.run(['git', 'push'], 
+                push_result = subprocess.run(['git', 'push'],
                                            capture_output=True, text=True, cwd='.')
-                
+
                 if push_result.returncode == 0:
                     logging.info("✅ Estado actualizado y sincronizado con GitHub")
                 else:
@@ -466,70 +471,6 @@ class StudiaBotDefinitivo:
                     logging.info(f"📈 MÁS PLAZAS: {course['title']} ({previous_plazas} → {current_plazas})")
         
         return new_courses
-    
-    def send_clean_email(self, courses):
-        """Enviar email con formato limpio y simple"""
-        try:
-            msg = MIMEMultipart()
-            msg['From'] = self.email_from
-            msg['To'] = ', '.join(self.email_to)  # Unir múltiples destinatarios con comas
-            msg['Subject'] = f"StudiaOnline - Cursos Disponibles Julio/Agosto {self.target_year} ({datetime.now().strftime('%d/%m/%Y')})"
-
-            if courses:
-                body = "🎓 CURSOS CON PLAZAS DISPONIBLES\n"
-                body += f"📅 JULIO Y AGOSTO {self.target_year}\n"
-                body += "=" * 50 + "\n\n"
-                
-                # Separar por mes
-                julio_courses = [c for c in courses if c['month'] == 'julio']
-                agosto_courses = [c for c in courses if c['month'] == 'agosto']
-                
-                # Cursos de JULIO
-                if julio_courses:
-                    body += "📅 JULIO 2026\n"
-                    body += "-" * 20 + "\n"
-                    for i, course in enumerate(julio_courses, 1):
-                        body += f"{i}. {course['title']}\n"
-                    body += "\n"
-                
-                # Cursos de AGOSTO
-                if agosto_courses:
-                    body += "📅 AGOSTO 2026\n"
-                    body += "-" * 20 + "\n"
-                    for i, course in enumerate(agosto_courses, 1):
-                        body += f"{i}. {course['title']}\n"
-                    body += "\n"
-                
-                # Resumen simple
-                body += f"Total: {len(courses)} cursos con plazas libres\n"
-                body += f"({len(julio_courses)} en julio, {len(agosto_courses)} en agosto)\n\n"
-                body += f"Búsqueda: {datetime.now().strftime('%d/%m/%Y %H:%M')}\n"
-                body += f"🔗 {self.base_url}"
-
-            else:
-                body = "📋 REVISIÓN STUDIAONLINE\n"
-                body += "=" * 30 + "\n\n"
-                body += "❌ No hay cursos con plazas disponibles\n"
-                body += f"   para julio y agosto {self.target_year}\n\n"
-                body += f"Búsqueda: {datetime.now().strftime('%d/%m/%Y %H:%M')}\n"
-                body += "📧 Te notificaré cuando haya plazas"
-            
-            msg.attach(MIMEText(body, 'plain', 'utf-8'))
-            
-            # Enviar email
-            with smtplib.SMTP(self.smtp_server, self.smtp_port) as server:
-                server.starttls()
-                server.login(self.email_from, self.email_password)
-                # Enviar a todos los destinatarios
-                for recipient in self.email_to:
-                    server.sendmail(self.email_from, recipient, msg.as_string())
-            
-            logging.info(f"📧 Email enviado a {len(self.email_to)} destinatarios: {len(courses)} cursos con plazas")
-            return True
-            
-        except Exception:
-            logging.exception("❌ Error enviando email")
-            return False
     
     def send_changes_email(self, new_courses):
         """Enviar email solo cuando hay cursos nuevos o cambios"""
