@@ -35,6 +35,9 @@ pip install -r requirements.txt
 Copia `.env.example` a `.env` y completa los valores:
 
 ```bash
+# URL base de StudiaOnline (opcional, por defecto https://studiaonline.org/)
+# STUDIA_BASE_URL=https://studiaonline.org/
+
 # Credenciales StudiaOnline
 STUDIA_USERNAME=tu_usuario
 STUDIA_PASSWORD=tu_contraseña
@@ -120,6 +123,14 @@ python studia_bot_definitivo.py --monitor
 # Solo recibirás email cuando haya cambios reales
 ```
 
+## 🧪 Tests
+
+El proyecto incluye tests unitarios para la lógica de filtrado de cursos (mes, año, lugar, excepción Tafira, plazas disponibles):
+
+```bash
+python3 -m unittest discover -s tests
+```
+
 ## 🚀 Despliegue GRATUITO con GitHub Actions
 
 ### 📦 Configuración paso a paso
@@ -179,7 +190,6 @@ bot_studia/
 ### ❌ Error en GitHub Actions
 - Verifica que todos los **GitHub Secrets** están configurados correctamente
 - Ve a Actions → workflow run → logs para ver error específico
-- Consulta `verificar_github_actions.md` para debugging detallado
 - **Error "No module named 'bs4'"**: El archivo `requirements.txt` incluye todas las dependencias necesarias
 
 ### ❌ El bot no encuentra cursos
