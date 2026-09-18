@@ -6,14 +6,19 @@ on:
     - cron: '*/10 * * * *'
   workflow_dispatch:  # Permite ejecutar manualmente
 
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
 jobs:
   monitor_courses:
     runs-on: ubuntu-latest
-    
+    timeout-minutes: 5
+
     # Permisos para escribir al repositorio
     permissions:
       contents: write
-    
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
