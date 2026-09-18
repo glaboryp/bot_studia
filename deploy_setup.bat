@@ -3,7 +3,7 @@ echo 🚀 Configuración para GitHub Actions
 echo ==================================
 echo.
 echo ⭐ GitHub Actions - 100% GRATIS PARA SIEMPRE
-echo    - Ejecuta cada 30 minutos automáticamente
+echo    - Ejecuta cada 10 minutos automáticamente
 echo    - Sin límites reales para repos públicos  
 echo    - Ya configurado en .github/workflows/monitor.yml
 echo    - Logs detallados en tiempo real
@@ -84,13 +84,12 @@ if %errorlevel% equ 0 (
     echo 3. Activar workflow:
     echo    Actions ^> "StudiaOnline Bot Monitor" ^> Enable workflow
     echo.
-    echo 4. ¡LISTO! Se ejecuta cada 30 minutos automáticamente
+    echo 4. ¡LISTO! Se ejecuta cada 10 minutos automáticamente
     echo    - Logs visibles en Actions tab
     echo    - Solo envía email cuando hay cambios
     echo    - 100%% GRATIS para siempre
     echo.
     echo 📖 Guía completa en README.md
-    echo 📖 Verificación en verificar_github_actions.md
 ) else (
     echo ❌ Error subiendo a GitHub
     echo Verifica la URL del repositorio y tus credenciales
