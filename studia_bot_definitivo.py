@@ -15,7 +15,7 @@ from datetime import datetime
 import os
 from dotenv import load_dotenv
 import re
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 import json
 
 # Cargar variables de entorno
@@ -110,13 +110,16 @@ class StudiaBotDefinitivo:
                 return False
             
             # Extraer action del formulario
-            form_action = login_form.get('action', '')
-            if form_action.startswith('/'):
-                login_url = self.base_url.rstrip('/') + form_action
-            elif form_action.startswith('http'):
-                login_url = form_action
-            else:
-                login_url = self.base_url.rstrip('/') + '/' + form_action.lstrip('/')
+            login_url = urljoin(self.base_url, login_form.get('action', ''))
+            expected_origin = urlparse(self.base_url)
+            login_origin = urlparse(login_url)
+            if (
+                expected_origin.scheme != 'https'
+                or login_origin.scheme != expected_origin.scheme
+                or login_origin.netloc != expected_origin.netloc
+            ):
+                logging.error("❌ El formulario de login apunta a un origen no permitido")
+                return False
             
             # Preparar datos
             form_data = {}
@@ -140,8 +143,11 @@ class StudiaBotDefinitivo:
             logging.info(f"📤 Enviando credenciales a: {login_url}")
             
             # Realizar login
-            login_response = self.session.post(login_url, data=form_data, allow_redirects=True, timeout=30)
+            login_response = self.session.post(login_url, data=form_data, allow_redirects=False, timeout=30)
             login_response.raise_for_status()
+            if 300 <= login_response.status_code < 400:
+                logging.error("❌ Login redirigido; no se reenvían credenciales")
+                return False
 
             # Verificar éxito del login: si la respuesta todavía contiene un campo de
             # contraseña, seguimos en la página de login (credenciales rechazadas)
@@ -162,7 +168,7 @@ class StudiaBotDefinitivo:
         try:
             # Login
             if not self.login():
-                return []
+                return None
 
             # Acceder a la página de cursos principal para obtener la sesión
             courses_url = urljoin(self.base_url, '/studiapy3/venta_online/cursos')
@@ -172,13 +178,13 @@ class StudiaBotDefinitivo:
 
             if response.status_code != 200:
                 logging.error(f"❌ Error accediendo a cursos: {response.status_code}")
-                return []
+                return None
 
             # Obtener el id_alumno de la página inicial
             id_alumno_match = re.search(r'id_alumno:\s*(\d+)', response.text)
             if not id_alumno_match:
                 logging.error("❌ No se pudo extraer id_alumno de la página de cursos")
-                return []
+                return None
             id_alumno = int(id_alumno_match.group(1))
             
             all_courses = []
@@ -214,14 +220,14 @@ class StudiaBotDefinitivo:
 
                 if ajax_response.status_code != 200:
                     logging.error(f"❌ Error en AJAX página {page}: {ajax_response.status_code}")
-                    break
+                    return None
                 
                 try:
                     ajax_json = ajax_response.json()
                     
                     if not ajax_json.get('status', False):
                         logging.warning(f"⚠️ AJAX sin status en página {page}")
-                        break
+                        return None
                     
                     page_courses = ajax_json.get('cursos', [])
                     total_cursos = ajax_json.get('total_cursos', 0)
@@ -250,7 +256,7 @@ class StudiaBotDefinitivo:
                         
                 except Exception:
                     logging.exception(f"❌ Error procesando AJAX página {page}")
-                    break
+                    return None
             
             # Eliminar duplicados finales
             unique_courses = []
@@ -269,7 +275,7 @@ class StudiaBotDefinitivo:
             
         except Exception:
             logging.exception("❌ Error obteniendo cursos")
-            return []
+            return None
     
     def extract_courses_from_json(self, cursos_data):
         """Extraer cursos con plazas disponibles de datos JSON"""
@@ -536,6 +542,10 @@ class StudiaBotDefinitivo:
             # Obtener cursos actuales
             current_courses = self.get_available_courses()
             
+            if current_courses is None:
+                logging.error("❌ No se actualiza el estado porque la consulta de cursos falló")
+                return False
+
             if current_courses:
                 logging.info(f"✅ CURSOS ACTUALES ({len(current_courses)}):")
                 for i, course in enumerate(current_courses, 1):
